@@ -1,0 +1,9 @@
+.Rhistory
+.RData
+.Rproj.user/
+# Per-replication files written by a FULL run (summaries in results/ are tracked)
+results/power/runs/
+results/power/study_runs/
+# Logs and intermediate files of R/run_all.R and the PDF build
+logs/
+report/pdf/*.html

@@ -1,0 +1,60 @@
+"design","n_per_group","method","label","reps","power","type1","na","power_size_adjusted"
+"study",50,"oracle_theta","Benchmark: theta known",100,0.387,0.053,0,0.37
+"study",50,"marginal","Benchmark: proportions (no impact)",100,0.35,0.047,0,0.353
+"study",50,"mimic2011","MIMIC as in 2011 (no f ~ x)",100,0.357,0.05,0,0.357
+"study",50,"mimic_eqload","MIMIC 2011, equal loadings",100,0.357,0.05,0,0.357
+"study",50,"mimic_anchored","MIMIC, f ~ x, all other items anchor",100,0.247,0.1,0,0.24
+"study",50,"mimic_oracle","MIMIC, f ~ x, true clean anchor",100,0.343,0.057,0,0.333
+"study",50,"lrt_none","LRT, no purification",100,0.277,0.13,0,0.233
+"study",50,"lrt_difR","LRT, difR purification (2011)",100,0.3,0.143,0,0.233
+"study",50,"lrt_standard","LRT, standard purification",100,0.267,0.117,0,0.217
+"study",50,"lrt_oracle","LRT, true clean anchor",100,0.427,0.101,0,0.327
+"study",50,"mh_none","Mantel-Haenszel, total score",100,0.157,0.057,0,0.19
+"study",50,"mh_purified","Mantel-Haenszel, purified",100,0.153,0.049,0,0.203
+"study",50,"mh_oracle","Mantel-Haenszel, true clean anchor",100,0.233,0.033,0,0.293
+"study",50,"mh_none_nocc","MH, no continuity correction",100,0.213,0.101,0,0.2
+"study",50,"mh_purified_nocc","MH, no correction, purified",100,0.22,0.081,0,0.217
+"study",50,"mh_oracle_nocc","MH, no correction, true clean anchor",100,0.313,0.049,0,0.297
+"study",50,"cml_none","CML LRT, all other items anchor",100,0.237,0.101,0,0.233
+"study",50,"cml_purified","CML LRT, standard purification",100,0.227,0.076,0,0.22
+"study",50,"cml_oracle","CML LRT, true clean anchor",100,0.327,0.059,0,0.31
+"study",50,"tree_gated","Rasch tree (gate) + anchortest (2011 rebuild)",100,0.116,0.055,36,NA
+"study",50,"anchortest","anchortest, no gate",100,0.232,0.1,100,0.193
+"study_n150",150,"oracle_theta","Benchmark: theta known",200,0.848,0.047,0,NA
+"study_n150",150,"marginal","Benchmark: proportions (no impact)",200,0.8,0.046,0,NA
+"study_n150",150,"mimic2011","MIMIC as in 2011 (no f ~ x)",200,0.8,0.049,0,NA
+"study_n150",150,"mimic_eqload","MIMIC 2011, equal loadings",200,0.8,0.049,0,NA
+"study_n150",150,"mimic_anchored","MIMIC, f ~ x, all other items anchor",200,0.578,0.156,0,NA
+"study_n150",150,"mimic_oracle","MIMIC, f ~ x, true clean anchor",200,0.783,0.059,0,NA
+"study_n150",150,"mh_none","Mantel-Haenszel, total score",200,0.518,0.12,0,NA
+"study_n150",150,"mh_purified","Mantel-Haenszel, purified",200,0.595,0.054,0,NA
+"study_n150",150,"mh_oracle","Mantel-Haenszel, true clean anchor",200,0.73,0.031,0,NA
+"study_n150",150,"mh_none_nocc","MH, no continuity correction",200,0.582,0.153,0,NA
+"study_n150",150,"mh_purified_nocc","MH, no correction, purified",200,0.647,0.07,0,NA
+"study_n150",150,"mh_oracle_nocc","MH, no correction, true clean anchor",200,0.772,0.052,0,NA
+"study_n150",150,"cml_none","CML LRT, all other items anchor",200,0.6,0.156,0,NA
+"study_n150",150,"cml_purified","CML LRT, standard purification",200,0.687,0.079,0,NA
+"study_n150",150,"cml_oracle","CML LRT, true clean anchor",200,0.79,0.049,0,NA
+"study_n150",150,"tree_gated","Rasch tree (gate) + anchortest (2011 rebuild)",200,0.635,0.1,171,NA
+"study_n150",150,"anchortest","anchortest, no gate",200,0.686,0.109,200,NA
+"null",50,"oracle_theta","Benchmark: theta known",100,NA,0.056,0,NA
+"null",50,"marginal","Benchmark: proportions (no impact)",100,NA,0.047,0,NA
+"null",50,"mimic2011","MIMIC as in 2011 (no f ~ x)",100,NA,0.053,0,NA
+"null",50,"mimic_eqload","MIMIC 2011, equal loadings",100,NA,0.053,0,NA
+"null",50,"mimic_anchored","MIMIC, f ~ x, all other items anchor",100,NA,0.057,0,NA
+"null",50,"mimic_oracle","MIMIC, f ~ x, true clean anchor",100,NA,0.057,0,NA
+"null",50,"lrt_none","LRT, no purification",100,NA,0.07,0,NA
+"null",50,"lrt_difR","LRT, difR purification (2011)",100,NA,0.078,0,NA
+"null",50,"lrt_standard","LRT, standard purification",100,NA,0.067,0,NA
+"null",50,"lrt_oracle","LRT, true clean anchor",100,NA,0.07,0,NA
+"null",50,"mh_none","Mantel-Haenszel, total score",100,NA,0.027,0,NA
+"null",50,"mh_purified","Mantel-Haenszel, purified",100,NA,0.024,0,NA
+"null",50,"mh_oracle","Mantel-Haenszel, true clean anchor",100,NA,0.027,0,NA
+"null",50,"mh_none_nocc","MH, no continuity correction",100,NA,0.055,0,NA
+"null",50,"mh_purified_nocc","MH, no correction, purified",100,NA,0.053,0,NA
+"null",50,"mh_oracle_nocc","MH, no correction, true clean anchor",100,NA,0.055,0,NA
+"null",50,"cml_none","CML LRT, all other items anchor",100,NA,0.054,0,NA
+"null",50,"cml_purified","CML LRT, standard purification",100,NA,0.053,0,NA
+"null",50,"cml_oracle","CML LRT, true clean anchor",100,NA,0.054,0,NA
+"null",50,"tree_gated","Rasch tree (gate) + anchortest (2011 rebuild)",100,NA,0.012,5,NA
+"null",50,"anchortest","anchortest, no gate",100,NA,0.068,100,NA

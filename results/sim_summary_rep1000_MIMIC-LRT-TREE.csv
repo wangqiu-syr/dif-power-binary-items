@@ -1,0 +1,4 @@
+"method","power","power_lo","power_hi","type1","type1_lo","type1_hi","n_rep","fits_na"
+"MIMIC (z >= 1.96)",0.3477,0.3288,0.3665,0.0261,0.022,0.0303,1000,0
+"IRT-LRT (difLRT, purified)",0.3227,0.3055,0.3398,0.1221,0.1144,0.1299,1000,0
+"Rasch tree + anchored Wald",0.1213,0.1057,0.137,0.0414,0.0354,0.0475,1000,0

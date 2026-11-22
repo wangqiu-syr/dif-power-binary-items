@@ -1,0 +1,28 @@
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.5 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+[1] C
+
+time zone: Etc/UTC
+tzcode source: system (glibc)
+
+attached base packages:
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+[1] psychotree_0.16-0 psychotools_0.7-3 partykit_1.2-20   mvtnorm_1.2-4    
+[5] libcoin_1.0-10    lme4_1.1-35.1     Matrix_1.6-5      lavaan_0.6-17    
+
+loaded via a namespace (and not attached):
+ [1] Formula_1.2-5   lattice_0.22-5  inum_1.0-5      rpart_4.1.23   
+ [5] splines_4.3.3   pbivnorm_0.6.0  stats4_4.3.3    nloptr_2.0.3   
+ [9] mnormt_2.1.1    compiler_4.3.3  boot_1.3-30     nlme_3.1-164   
+[13] minqa_1.2.6     survival_3.5-8  Rcpp_1.0.12     quadprog_1.5-8 
+[17] MASS_7.3-60.0.1

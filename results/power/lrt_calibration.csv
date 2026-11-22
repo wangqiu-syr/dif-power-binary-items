@@ -1,0 +1,6 @@
+"engine","tests","mean_stat","type1","q95","type1_se"
+"difR_deviance",600,1.167,0.063,4.28,0.01
+"difR_deviance_default_optimizer",200,1.256,0.08,4.6,0.019
+"laplace_lr",600,1.004,0.045,3.67,0.008
+"agq15_lr",600,1.004,0.045,3.67,0.008
+"cml_lr",600,1.01,0.05,3.69,0.009

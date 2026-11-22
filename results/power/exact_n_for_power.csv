@@ -1,0 +1,5 @@
+"table","item","n_known_theta","n_marginal","n_noimpact_ml","n_clean_anchor","n_all_anchor"
+"n for power .80","i1",165,193,191,181,297
+"n for power .80","i5",125,151,150,142,221
+"n for power .80","i10",129,155,155,146,226
+"n for power .80","global test (9 df)",NA,NA,NA,128,NA

@@ -1,0 +1,86 @@
+
+=== (a) MIMIC on dif_responseiteration3.csv: Mplus 4.2 vs lavaan 0.7.2 ===
+ lhs op rhs est.mplus se.mplus z.mplus est.lavaan se.lavaan z.lavaan est.diff
+  f1 =~  i1     0.796    0.110   7.264      0.796     0.110    7.228    0.000
+  f1 =~  i2     0.475    0.113   4.190      0.475     0.114    4.169    0.000
+  f1 =~  i3     0.399    0.120   3.313      0.399     0.121    3.296    0.000
+  f1 =~  i4     0.470    0.113   4.169      0.470     0.113    4.148    0.000
+  f1 =~  i5     0.261    0.132   1.982      0.261     0.132    1.972    0.000
+  f1 =~  i6     0.848    0.072  11.789      0.848     0.072   11.730    0.000
+  f1 =~  i7     0.492    0.111   4.421      0.492     0.112    4.399    0.000
+  f1 =~  i8     0.616    0.105   5.885      0.616     0.105    5.856    0.000
+  f1 =~  i9     0.565    0.112   5.058      0.565     0.112    5.033    0.000
+  f1 =~ i10     0.658    0.122   5.371      0.658     0.123    5.344    0.000
+  i1  ~   x     0.401    0.265   1.512      0.401     0.266    1.505    0.000
+  i2  ~   x     0.053    0.256   0.207      0.053     0.257    0.206    0.000
+  i3  ~   x     0.051    0.253   0.203      0.051     0.254    0.202    0.000
+  i4  ~   x     0.050    0.251   0.200      0.050     0.252    0.199    0.000
+  i5  ~   x     0.618    0.256   2.413      0.619     0.258    2.401    0.001
+  i6  ~   x     0.052    0.254   0.205      0.052     0.256    0.204    0.000
+  i7  ~   x     0.051    0.252   0.202      0.051     0.253    0.201    0.000
+  i8  ~   x     0.119    0.267   0.445      0.119     0.268    0.443    0.000
+  i9  ~   x     0.239    0.268   0.890      0.239     0.269    0.886    0.000
+ i10  ~   x     0.980    0.283   3.461      0.980     0.285    3.444    0.000
+  i1  |  t1    -0.305    0.180  -1.694     -0.305     0.181   -1.686    0.000
+  i2  |  t1    -0.305    0.180  -1.694     -0.305     0.181   -1.686    0.000
+  i3  |  t1    -0.202    0.179  -1.131     -0.202     0.179   -1.125    0.000
+  i4  |  t1     0.050    0.177   0.283      0.050     0.178    0.281    0.000
+  i5  |  t1     0.151    0.178   0.848      0.151     0.179    0.844    0.000
+  i6  |  t1     0.305    0.180   1.694      0.305     0.181    1.686    0.000
+  i7  |  t1     0.202    0.179   1.131      0.202     0.179    1.125    0.000
+  i8  |  t1     0.643    0.191   3.364      0.643     0.192    3.347    0.000
+  i9  |  t1     0.706    0.194   3.635      0.706     0.195    3.617    0.000
+ i10  |  t1     1.080    0.220   4.900      1.080     0.222    4.876    0.000
+
+Largest |estimate difference|: 0.001
+lavaan SEs are larger by a near-constant factor; mean SE ratio (lavaan / Mplus): 1.0044 (sqrt(N / (N - 1)) = 1.0050)
+
+Model fit. lavaan_old_test = mean/var-adjusted chi-square with estimated df (as Mplus 4.2);
+lavaan_wlsmv_default = scaled-and-shifted chi-square (as Mplus 6 and later).
+    measure mplus_4.2 lavaan_old_test lavaan_wlsmv_default
+ chi-square   29.2520          29.163               43.809
+         df   22.0000          22.155               35.000
+          p    0.1378           0.145                0.146
+        CFI    0.9390           0.938                0.946
+        TLI    0.9280           0.940                0.931
+      RMSEA    0.0570           0.057                0.050
+       WRMR    0.7430           0.739                0.739
+Loading required namespace: multcomp
+
+=== DIF decisions: dif_responseiteration3.csv (data behind diff_ab1.out) ===
+MIMIC flag: z >= 1.96 (2011 rule).
+LRT flag: difLRT, purify = TRUE, alpha = .05.
+Rasch tree: split on group = TRUE; flag: anchored Wald p < .05 (tree_z NA = not tested).
+ item mimic_z mimic_flag lrt_stat lrt_flag tree_z tree_flag
+   i1   1.505      FALSE    2.317    FALSE  1.365     FALSE
+   i2   0.206      FALSE    0.074    FALSE  0.009     FALSE
+   i3   0.202      FALSE    0.116    FALSE -0.030     FALSE
+   i4   0.199      FALSE    0.159    FALSE -0.134     FALSE
+   i5   2.401       TRUE    5.035     TRUE  2.172      TRUE
+   i6   0.204      FALSE    0.177    FALSE     NA     FALSE
+   i7   0.201      FALSE    0.178    FALSE -0.192     FALSE
+   i8   0.443      FALSE    0.012    FALSE -0.010     FALSE
+   i9   0.886      FALSE    0.274    FALSE  0.541     FALSE
+  i10   3.444       TRUE    9.967     TRUE  3.071      TRUE
+Warning messages:
+1: package 'psychotree' was built under R version 4.5.3 
+2: package 'partykit' was built under R version 4.5.3 
+3: package 'libcoin' was built under R version 4.5.3 
+4: package 'mvtnorm' was built under R version 4.5.3 
+5: package 'psychotools' was built under R version 4.5.3 
+
+=== DIF decisions: DIF_data.dat (last data set from the 2011 loop) ===
+MIMIC flag: z >= 1.96 (2011 rule).
+LRT flag: difLRT, purify = TRUE, alpha = .05.
+Rasch tree: split on group = FALSE; flag: anchored Wald p < .05 (tree_z NA = not tested).
+ item mimic_z mimic_flag lrt_stat lrt_flag tree_z tree_flag
+   i1   1.396      FALSE    0.928    FALSE     NA     FALSE
+   i2  -0.215      FALSE    1.022    FALSE     NA     FALSE
+   i3   0.829      FALSE    0.094    FALSE     NA     FALSE
+   i4  -0.798      FALSE    2.704    FALSE     NA     FALSE
+   i5   0.802      FALSE    0.114    FALSE     NA     FALSE
+   i6   0.607      FALSE    0.044    FALSE     NA     FALSE
+   i7  -0.403      FALSE    1.507    FALSE     NA     FALSE
+   i8   0.658      FALSE    0.200    FALSE     NA     FALSE
+   i9   0.000      FALSE    0.145    FALSE     NA     FALSE
+  i10   1.875      FALSE    3.748    FALSE     NA     FALSE

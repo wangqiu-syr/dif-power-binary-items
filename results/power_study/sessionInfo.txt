@@ -1,0 +1,32 @@
+# sessionInfo() printed at the end of the final leg of Rscript R/08_power_study.R 4 300 (2026-11-19)
+R version 4.3.3 (2024-02-29)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 24.04.5 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+locale:
+[1] C
+
+time zone: Etc/UTC
+tzcode source: system (glibc)
+
+attached base packages:
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+[1] psychotree_0.16-0 psychotools_0.7-3 partykit_1.2-20   mvtnorm_1.2-4    
+[5] libcoin_1.0-10    lavaan_0.6-17    
+
+loaded via a namespace (and not attached):
+ [1] Formula_1.2-5  Matrix_1.6-5   lattice_0.22-5 inum_1.0-5     splines_4.3.3 
+ [6] rpart_4.1.23   parallel_4.3.3 pbivnorm_0.6.0 stats4_4.3.3   mnormt_2.1.1  
+[11] compiler_4.3.3 survival_3.5-8 quadprog_1.5-8
+
+# Packages loaded only inside the worker processes (glmer for difLRT):
+lme4 1.1.35.1 
+Matrix 1.6.5 
+multcomp 1.4.25 

@@ -1,0 +1,6 @@
+share of replications in which each item is in the anchor for item 2 (n = 250, one-way 0.5):
+ [1] 0.25 0.00 0.82 0.72 0.28 0.77 0.65 0.67 0.55 0.30
+median(d) minus the mean of the clean items' d (positive = pulled toward the DIF items): 0.103 
+normal approx, s = 0.35: Type I k=5 0.055 (dif .5), 0.064 (dif .8); k=3 0.040 (dif .5)
+normal approx, s = 0.25: Type I k=5 0.063 (dif .5), 0.062 (dif .8); k=3 0.046 (dif .5)
+normal approx, s = 0.20: Type I k=5 0.064 (dif .5), 0.056 (dif .8); k=3 0.050 (dif .5)
