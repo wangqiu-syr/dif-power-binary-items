@@ -15,7 +15,7 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
 1. **The baseline: at 50 examinees per group, every method has low power.** With 10 Rasch items and
    0.8 logits of DIF on 3 of them, MIMIC flagged a DIF item 34.8% of the time, the IRT
    likelihood-ratio test (difLRT) 32.3% and the Rasch tree 12.1% (1,000 replications). Exact
-   calculations show that no valid test can exceed about .39 there: the ceiling is the design.
+   calculations show that no valid two-sided test of a single item can exceed about .39 there: the ceiling is the design.
 2. **Three methods become nine.** The three methods differ in four components at once (statistic,
    anchor, design, decision rule). A pre-specified simulation (40 conditions × 300 replications)
    used nine methods in three families (LRT, MIMIC, Rasch tree), each variant changing one or two
@@ -28,7 +28,8 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
    at 50 per group) raise power; a median-based robust anchor did not.
 4. **What controls Type I error.** A correctly computed statistic, purification that re-tests every
    item and, for MIMIC, modeling impact. Purified CML LRT, purified Mantel–Haenszel and MIMIC with
-   scale purification are interchangeable and hold about .05; difLRT's extra power was false
+   scale purification are interchangeable and hold about .05 without DIF or with mixed DIF
+   (.05–.09 with one-way DIF); difLRT's extra power was false
    positives, and the baseline MIMIC flagged 17–60% of clean items when the groups differed by
    0.5 SD.
 

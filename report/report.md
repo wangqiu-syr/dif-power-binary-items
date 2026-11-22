@@ -2,7 +2,7 @@
 
 [Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Version 1.0.0 · November 2026 · DOI: assigned by Zenodo at release (see the repository README)
 
-Text and figures: CC BY 4.0. Code: MIT. Code, results and how to reproduce every number: https://github.com/wangqiu-syr/dif-power-binary-items
+Text and figures: CC BY 4.0. Code: MIT. Code, results and how to reproduce every simulation result: https://github.com/wangqiu-syr/dif-power-binary-items
 
 ## Abstract
 
@@ -14,25 +14,27 @@ power per item while holding the 5% level.
 A baseline design at the small-sample end of DIF studies (10 Rasch items, 50 examinees per group,
 0.8 logits of DIF on three items) gave low power for all three common methods: .35 for MIMIC, .32
 for the IRT likelihood-ratio test (which also flagged 12% of clean items) and .12 for the Rasch
-tree. Exact calculations showed that no valid test
-can exceed the ceiling of .39. The three methods differ in four components at once (the test
+tree. Exact calculations showed that no valid two-sided test of a
+single item can exceed .39 in this design. The three methods differ in four components at once (the test
 statistic, the anchor, the design, meaning how group differences in ability are handled, and the
 decision rule), so the baseline comparison cannot say which component costs power or inflates
 Type I error.
 
-We therefore built a family around each baseline method (LRT, MIMIC and Rasch tree), with variants
+I therefore built a family around each baseline method (LRT, MIMIC and Rasch tree), with variants
 that each change one or two components: nine methods in three families, including an LRT that is
 told which items are clean, plus a test that knows every examinee's ability as a ceiling. The
 pre-specified Simulation 2 tested them: 40 conditions crossing sample size (50 to
 250 per group), DIF size, DIF direction and group ability differences, 300 replications each, with
-six hypotheses fixed in advance. Sample size is the main lever for power: for 0.8 logits, .80 per
+six hypotheses fixed before the full run (H1–H5 before any Simulation 2 data were generated, H6
+after a 20-replication pilot). Sample size is the main lever for power: for 0.8 logits, .80 per
 item needs about 160–195 examinees per group with a purified anchor (about 150–160 with a known clean
 anchor); for 0.5 logits, even a known clean anchor needs about 380. At a fixed sample size, a one-sided test in a pre-registered direction (+.07 to +.12) and a joint test
 of the suspected items (.70 at 50 per group) raise power; a median-based robust anchor did not.
 Type I error is held by a correctly computed statistic, by purification that re-tests every item
 and, for MIMIC, by modeling the group difference in ability. The purified conditional-ML
 likelihood-ratio test, purified Mantel–Haenszel and MIMIC with scale purification were
-interchangeable and close to .05, whereas the baseline MIMIC flagged 17–60% of clean items when
+interchangeable; they held about .05 without DIF or with mixed DIF and ran at .05–.09 with one-way
+DIF, whereas the baseline MIMIC flagged 17–60% of clean items when
 the groups differed by 0.5 SD. The Rasch tree had the lowest power in small samples because its
 global test acts as a gate: its item tests run only after a 9-df test of all items rejects, which
 happened in 29% of the baseline samples. Without the gate, anchortest found .05–.14 more DIF items
@@ -97,7 +99,7 @@ Table 1 shows how the three baseline methods set each component.
 | Anchor | None explicit: all ten direct effects are free | All other items, purified iteratively (`purify = TRUE`): flagged items are dropped and never re-tested | Chosen after the split by `anchortest()` (forward selection, mean test-statistic threshold) |
 | Design | Impact assumed zero: no effect of group on the factor (the model is identified by equal group means) | Impact estimated: a group main effect in the mixed model | Impact absorbed by the anchor, which fixes the common scale |
 | Decision rule | One-sided, $z \ge 1.96$ ($\alpha = .025$) | $\chi^2_1 \ge 3.84$ ($\alpha = .05$) | Item tests only if a global test of all item parameters (9 df) rejects at .05; then Wald $p < .05$ |
-| Software | lavaan (Rosseel, 2012); Mplus 4.2 in the original study | difR (Magis et al., 2010), via lme4 | psychotree, psychotools (Strobl et al., 2015; Kopf et al., 2015a, 2015b) |
+| Software | lavaan (Rosseel, 2012); Mplus 4.2 in the original study | difR (Magis et al., 2010), via lme4 (Bates et al., 2015) | psychotree, psychotools (Strobl et al., 2015; Kopf et al., 2015a, 2015b) |
 
 **MIMIC.** The group indicator enters the measurement model as a covariate. A direct effect of
 group on an item, over and above its effect through the factor, is uniform DIF. Without the
@@ -168,7 +170,7 @@ error). Bars: Wilson 95% confidence intervals.
 
 All three methods have low power. MIMIC and the LRT have similar power, but the LRT flags 12% of
 clean items, more than twice its nominal 5%, and does so equally on all seven. The Rasch tree
-controls Type I error but finds a DIF item only 12% of the time: its global test splits on group
+controls Type I error but flags a DIF item in only 12% of tests: its global test splits on group
 in only 29% of replications.
 
 ## 4. Why power is low
@@ -180,7 +182,8 @@ where $x_i = 1$ for the focal group. If every examinee's $\theta$ were known, ea
 $P(1 - P)$ of information about $\delta_j$. Averaged over $\theta \sim N(0, 1)$, that information
 is about .207 at $b = 0$ and .178 at $b = \pm 1$. Then $$\text{power} = \Phi(z_j - 1.96) + \Phi(-z_j - 1.96),$$ as $$z_j = \frac{\delta_j}{\sqrt{\mathrm{Var}(\hat\delta_j)}}, \quad\text{with}\quad \mathrm{Var}(\hat\delta_j) = \frac{1}{n_R\, I(b_{jR})} + \frac{1}{n_F\, I(b_{jF})}.$$
 
-For i5 at 50 + 50 this gives $z = 1.77$ and power .43. Table 4 computes the same quantities
+For i5 at 50 + 50 this gives $z = 1.77$ and power .43, with information .207 in the reference
+group and .188 in the focal group, where the item's difficulty is $b - \delta = -0.8$. Table 4 computes the same quantities
 exactly for each item, over all 1,024 response patterns integrated over $\theta$.
 
 **Table 4**
@@ -193,13 +196,13 @@ exactly for each item, over all 1,024 response patterns integrated over $\theta$
 | Type I error, mean of the 7 clean items | .05 | .05 | .05 | .08 |
 | n per group for .80 (range over i1, i5, i10) | 125–165 | 151–193 | 142–181 | 221–297 |
 
-*Note.* "Item's own proportions" is the two-proportion test that the baseline MIMIC reduces to
+*Note.* Two-sided tests at .05. "Item's own proportions" is the two-proportion test that the baseline MIMIC reduces to
 (Section 4.2). "All other items as anchor" is the unpurified anchor that difLRT starts from.
 Files: `results/power/exact_items.csv`, `exact_n_for_power.csv`. The code for the exact
 calculations is released with the follow-up study (Section 6).
 
 So no method that has to estimate θ can do much better than about .35 at 50 + 50 (.34–.36), and
-none can exceed .39. A small focal group cannot be offset
+no two-sided test of a single item can exceed .39 (one-sided and joint tests: Table 5, A4 and A5). A small focal group cannot be offset
 by a large reference group, because the focal term in $\mathrm{Var}(\hat\delta_j)$ does not
 shrink: with 50 focal examinees, even a test that knew $\theta$ is capped at .69 for i5.
 
@@ -234,15 +237,17 @@ Three sources inflate difLRT's Type I error, one in the statistic and two in the
    so a clean item flagged in any round stays flagged.
 
 At a true 5% level (size-adjusted against the no-DIF condition, Section 5), difLRT's power is
-.220, the same as a correctly computed conditional-ML (CML) LRT (.221).
+.220, the same as a correctly computed conditional-ML (CML) LRT (.221). The adjustment is partial: it
+uses the critical value that gives 5% without DIF, and under one-way DIF a contaminated test's Type I
+error is higher than that (difLRT: .089 without DIF, .121 with it).
 
-### 4.4 The Rasch tree: two gates
+### 4.4 The Rasch tree: the gate and the anchor search
 
 *Component: decision rule.* The tree's global test spends its noncentrality on 9 degrees of
 freedom while the DIF sits in 3 items. Asymptotically it splits with probability
 $P(\chi^2_9(6.15) > 16.92) = .35$ (observed .29); the same noncentrality in a 1-df test would give
-.70. Given a split, `anchortest()` finds a DIF item 42% of the time, so overall
-$.29 \times .42 = .12$. With a known binary grouping the gate only costs power.
+.70. Given a split, `anchortest()` flags 42% of the tests on the DIF items (i1, i5, i10), so
+overall the share of DIF-item tests flagged is $.29 \times .42 = .12$. With a known binary grouping the gate only costs power.
 
 ### 4.5 Factors that raise power and factors that control Type I error
 
@@ -259,7 +264,7 @@ the last column are stated in Section 5.1 (Table 6).
 
 *Factors That Raise Power and Factors That Control Type I Error, With Their Predicted Effects*
 
-| Factor | Mechanism | Predicted effect | Tested in Simulation 2 by |
+| Factor | Mechanism | Predicted effect (exact calculation unless marked) | Tested in Simulation 2 by |
 |---|---|---|---|
 | **A. Raising power** | | | |
 | *Design* | | | |
@@ -270,7 +275,7 @@ the last column are stated in Section 5.1 (Table 6).
 | A3. An efficient statistic | Conditional tests (CML LRT, Mantel–Haenszel) use the Rasch model's sufficient statistic; Mantel–Haenszel's continuity correction costs power | Mantel–Haenszel without the correction: Type I .055 instead of .027 without DIF, power .21 instead of .16 at 50 + 50 (pilot) | Size-adjusted power of every method |
 | A4. A joint test of the suspected items | One common shift on i1, i5 and i10: $z_{\text{bundle}}$ approaches $z_{\text{item}} \sqrt{3}$ (less, because the three items share the anchor's error) | .70 at 50 + 50; .80 at about 64 per group | The bundle test (H4) |
 | *Decision-based* | | | |
-| A5. A one-sided test in a pre-registered direction | $\Phi(z - 1.645)$ instead of $\Phi(z - 1.96)$ | i5: .51 instead of .38 | The one-sided rule, applied to every method |
+| A5. A one-sided test in a pre-registered direction | $\Phi(z - 1.645)$ instead of $\Phi(z - 1.96)$ | i5 with a clean anchor: .51 instead of .38 | The one-sided rule, applied to every method |
 | A6. No global gate when the groups are known | The 9-df global test dilutes the DIF of 3 items | About twice the tree's power, at some cost in Type I error (B5) | anchortest without the gate (H6) |
 | **B. Controlling Type I error** | | | |
 | *Design* | | | |
@@ -285,8 +290,9 @@ the last column are stated in Section 5.1 (Table 6).
 | B6. Error control across items | Benjamini–Hochberg across the 10 items (Benjamini & Hochberg, 1995) | Fewer false flags; some power lost | The Benjamini–Hochberg rule, applied to every method |
 
 *Note.* Predicted effects are for the baseline design (10 items, 50 + 50, 0.8 logits, one-way DIF,
-no impact) unless stated. Conditional-ML: Andersen (1973); Mantel–Haenszel: Holland and Thayer
-(1988); the robust anchor follows the robust-scaling idea of Halpin (2024).
+no impact) unless stated. Conditional-ML: Andersen (1973); Mantel–Haenszel: Mantel and Haenszel
+(1959), Holland and Thayer (1988). The robust anchor is a simple median-based anchor inspired by the
+robust-scaling idea of Halpin (2024); it is not Halpin's estimator, which was not run.
 
 Before Simulation 2, a pilot checked these predictions on the baseline design (100 replications)
 and at 150 per group (200 replications). It ran fourteen methods, the rows of Figure 3: two
@@ -374,7 +380,7 @@ twin. Tables 8 and 9 show it there.
 | difLRT, purified (baseline) | — (reference): difR's mixed-model deviance difference; all other items as the anchor; purification that drops flagged items without re-testing them. Run only at $n$ = 50, $\mu$ = 0, with one-way DIF of 0.8 logits and with no DIF | — | — | — |
 | CML LRT, purified | Conditional-ML likelihood ratio; purification that re-tests every item | Statistic (A3, B4); anchor (B3) | Against difLRT at $n$ = 50, and against the clean-anchor benchmark | H2 |
 | Mantel–Haenszel, purified | A second conditional statistic (total-score matching, no continuity correction); purification that re-tests every item | Statistic (A3, B4); anchor (B3) | Against the purified CML LRT | H2 |
-| CML LRT, robust anchor (k = 5) | Anchor: the five items closest to the median group difference | Anchor (A2, B3) | Against the purified CML LRT and the clean-anchor benchmark | H1 |
+| CML LRT, robust anchor (k = 5) | Anchor: the five items closest to the median group difference (a simple median-based anchor, not Halpin's, 2024, estimator) | Anchor (A2, B3) | Against the purified CML LRT and the clean-anchor benchmark | H1 |
 | CML LRT, true clean anchor (benchmark) | Anchor: the truly clean items, known only in a simulation | The ceiling for anchor-based tests (A2) | Each anchor-based method against it | H1, H5 |
 | **MIMIC family** | | | | |
 | MIMIC, baseline specification | — (reference): no group effect on the factor | — | — | H3 |
@@ -473,7 +479,10 @@ impact, printed below them. Exact values for every condition: `results/power_stu
 | anchortest without the tree's gate | .267 / .524 / .713 / .916 | .303 / .523 / .728 / .939 | .404 / .614 / .787 / .924 | .134 / .273 / .343 / .541 | .217 / .352 / .459 / .637 |
 
 *Note.* All tests two-sided at α = .05; one-way and mixed DIF as in Table 8. — = not run (difLRT
-ran only at $n$ = 50, $\mu$ = 0, in the one-way 0.8-logit and no-DIF conditions).
+ran only at $n$ = 50, $\mu$ = 0, in the one-way 0.8-logit and no-DIF conditions). Simulation 1 used
+the baseline study's one-sided rule for MIMIC ($z \ge 1.96$, nominal .025), which explains its Type I
+error there (.026, Table 3) against .046–.055 here. Its power at 50 + 50 (.348 in Table 3, .321
+here) differs by Monte Carlo error: the two-sided rule can only add flags, and the data sets differ.
 
 **Figure 5**
 
@@ -485,7 +494,9 @@ ran only at $n$ = 50, $\mu$ = 0, in the one-way 0.8-logit and no-DIF conditions)
 line: .80.
 
 - **Sample size is the lever.** For 0.8 logits, the clean-anchor benchmark reaches .80 at
-  about 150–160 per group. The purified methods need about 160–195 (H5: supported).
+  about 150–160 per group. The purified methods need about 160–195 (H5: supported). These sample
+  sizes, and the 380 below, come from fitting each method's power to $n$ with a noncentrality
+  proportional to $n$ (`docs/power_study.md` §5.3); 380 is an extrapolation beyond 250.
 - **0.5 logits is a different study.** Even the clean-anchor benchmark reaches only .61–.62 at 250
   per group; .80 needs about 380 (H5). The purified methods reach .43–.52 at 250 under one-way DIF
   and need more.
@@ -527,7 +538,9 @@ Table 10 collects, for each factor of Table 5, the comparison that isolates it a
 *Note.* Values at 50 / 100 / 150 / 250 per group unless stated. Sources: `results/power_study/rates.csv`,
 `rates_mcse.csv`, `results/power/lrt_calibration.csv`; `docs/power_study.md` §5.4–5.6.
 
-**Why the robust anchor failed.** With 0.5 logits of DIF the DIF items sit only about 2.5
+**Why the robust anchor failed.** The robust anchor here is a simple median-based anchor set up for
+this study; Halpin's (2024) robust-scaling estimator was not run, and these results do not test it.
+With 0.5 logits of DIF the DIF items sit only about 2.5
 standard errors from the clean ones. The median of ten item-wise differences is pulled about 0.10
 logits toward the DIF items, and each DIF item enters the anchor for a clean item in 25–30% of
 replications (`results/power_study/robust_anchor_check.txt`). The median protects against large
@@ -536,11 +549,13 @@ also estimates impact less precisely than the seven or so items that purificatio
 
 **The hypotheses.** The last column of Table 10 carries the decisions. H4, H5 and H6 were
 supported. H2 was partly supported: one-way DIF inflated the purified tests (.05–.09) and mixed DIF
-cancelled, but purification already removed most of the excess at every $n$, not only at
-$n \ge 150$. H3 was partly supported: the baseline MIMIC was nominal without impact (.046–.061),
-and with impact its Type I error followed the two-proportion prediction (.17 / .29 / .42 / .60) but
-did not come near 1. H1 was rejected: the robust anchor exceeded .065 in 8 of 16 one-way conditions
-(.066–.080), and its power was on average .077 below the clean-anchor benchmark. Supplement A3
+cancelled; the prediction that purification removes most of the excess only at $n \ge 150$ was
+wrong, since it did so at every $n$. H3 was partly supported: the baseline MIMIC was nominal without
+impact (.046–.061), and with impact its Type I error followed the two-proportion prediction
+(.17 / .29 / .42 / .60); the prediction "near 1" was wrong in the range studied. H1 was rejected on
+power: the robust anchor's power was on average .077 below the clean-anchor benchmark, against a
+criterion of .03. Its Type I error also exceeded .065 in 8 of 16 one-way conditions (.066–.080),
+though the smaller exceedances are within Monte Carlo error (MCSE up to .014). Supplement A3
 (Table A3.3) records each decision against the hypothesis as committed.
 
 ### 5.4 Method profiles across the factors
@@ -586,7 +601,10 @@ under one-way DIF, ≤ .075 (Yes), ≤ .15 (Semi). ᵃ Rated from the two condit
 rated from the tree's item tests without the gate (the anchortest row), since the gate is a
 separate decision rule. The baseline MIMIC's B3 rating reflects its outcome, not purification: its
 saturated mean structure tests each item on its own proportions, so it has no anchor to
-contaminate.
+contaminate. The cutoffs were set by the author for this summary; they are not standard. They do
+not separate the robust anchor (k = 5) from the purified CML LRT: its shortfall in power (.03 below
+the purified CML LRT) falls within the same Semi bands. Table 10 and Section 5.3 give the
+differences.
 
 Three profiles stand out. The purified methods (CML LRT, Mantel–Haenszel and M-SP) share one
 profile: full support for sample size, an efficient statistic and one-sided testing, and partial
@@ -600,7 +618,7 @@ items supports every factor but the gate (B5), which it does not need.
 ## 6. Discussion and recommendations
 
 The low power of the baseline design is mostly a property of the design. At 50 examinees per
-group, three items with 0.8 logits of DIF cannot be detected reliably by any valid item-level
+group, three items with 0.8 logits of DIF cannot be detected reliably by any valid two-sided item-level
 test: the exact ceiling is .39 with $\theta$ known and about .36 with a clean anchor. The methods
 differ in how much of that ceiling they lose and in whether they hold their level, and Simulation 2
 traces each difference to a component.
@@ -654,14 +672,17 @@ continuous covariates, where its search is the point (Strobl et al., 2015).
   the clean ones in standard-error units ($\delta/s$).
 
 **Limitations.** The data come from the Rasch model, with uniform DIF only, 10 items, equal group
-sizes and two impact levels. Unequal groups and items that differ in discrimination are common in
+sizes and two impact levels. Three of the ten items carry DIF in every DIF condition; that share,
+which drives the contamination of the anchor, was not varied. The MIMIC models are probit (WLSMV)
+models fitted to data from a logistic model. The .05 level applies to each item, not to the family
+of ten tests (Benjamini–Hochberg control is reported separately). Unequal groups and items that differ in discrimination are common in
 practice; they are the subject of the follow-up study. Each condition's rates carry Monte Carlo
 error of up to about .03 for power; differences smaller than that are not interpreted.
 
 ## 7. Conclusions and looking forward
 
 Small item-level DIF studies with binary items are underpowered by design, not by method: at 50
-examinees per group no valid test can do much better than about .35 against 0.8 logits of DIF
+examinees per group no valid two-sided test of a single item can do much better than about .35 against 0.8 logits of DIF
 (.39 if every examinee's θ were known).
 The methods that seemed to do better did so with an inflated Type I error. Power comes from the
 sample size: .80 per item needs about 160–195 examinees per group for 0.8 logits with a purified
@@ -675,7 +696,7 @@ some trees stay unfair (Halpin, 2026). Both views are needed, and at small sampl
 same wall.
 
 Two decades of new methods have opened a wider window on DIF in binary items, but none has moved
-the wall that small samples set. The newest results on robust scaling are mixed (Halpin, 2026;
+the wall that small samples set. The newest results on robust scaling itself, which this study did not run, are mixed (Halpin, 2026;
 Robitzsch, 2026); the window is still opening.
 
 ## Data and code availability
@@ -685,7 +706,8 @@ Code, results and this report: https://github.com/wangqiu-syr/dif-power-binary-i
 the stored results in under a minute, or reruns both simulations. All results come from simulated
 data; no external data are used. Two parts are not included: the code for the exact calculations
 (Section 4.1, Table 4), which is released with the follow-up study (its results are included), and
-the original materials of the baseline study, which are described in `docs/rebuild.md`.
+the original materials of the baseline study, which are described in `docs/rebuild.md`. The exact
+results behind Table 4 and the .39 ceiling are stored in `results/power/exact_*.csv`.
 
 ## AI assistance
 
@@ -696,6 +718,8 @@ results and is responsible for the content.
 ## References
 
 Andersen, E. B. (1973). A goodness of fit test for the Rasch model. *Psychometrika, 38*(1), 123–140. https://doi.org/10.1007/BF02291180
+
+Bates, D., Mächler, M., Bolker, B., & Walker, S. (2015). Fitting linear mixed-effects models using lme4. *Journal of Statistical Software, 67*(1), 1–48. https://doi.org/10.18637/jss.v067.i01
 
 Benjamini, Y., & Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. *Journal of the Royal Statistical Society: Series B (Methodological), 57*(1), 289–300. https://doi.org/10.1111/j.2517-6161.1995.tb02031.x
 
@@ -713,7 +737,11 @@ Kopf, J., Zeileis, A., & Strobl, C. (2015b). A framework for anchor methods and 
 
 Magis, D., Béland, S., Tuerlinckx, F., & De Boeck, P. (2010). A general framework and an R package for the detection of dichotomous differential item functioning. *Behavior Research Methods, 42*(3), 847–862. https://doi.org/10.3758/BRM.42.3.847
 
+Mantel, N., & Haenszel, W. (1959). Statistical aspects of the analysis of data from retrospective studies of disease. *Journal of the National Cancer Institute, 22*(4), 719–748. https://doi.org/10.1093/jnci/22.4.719
+
 Morris, T. P., White, I. R., & Crowther, M. J. (2019). Using simulation studies to evaluate statistical methods. *Statistics in Medicine, 38*(11), 2074–2102. https://doi.org/10.1002/sim.8086
+
+R Core Team. (2024). *R: A language and environment for statistical computing* (Version 4.3.3) [Computer software]. R Foundation for Statistical Computing. https://www.R-project.org/
 
 Robitzsch, A. (2026). Halpin's differential test functioning via robust linking: A comparison of bisquare and L<sub>0</sub> loss functions. *Information, 17*(5), 428. https://doi.org/10.3390/info17050428
 
@@ -785,5 +813,5 @@ hypotheses as committed and completes the retrospective ADEMP-PreReg form (Siepe
 The robust-anchor diagnostic in Section 5.3 was written during the run and is exploratory.
 
 *Execution.* All 12,000 data sets ran, with no failed fit in any method. M-SP needed 2.2
-purification passes on average, and a replication took 8.2 s on average (R 4.3.3 on Linux;
+purification passes on average, and a replication took 8.2 s on average (R 4.3.3, R Core Team, 2024, on Linux;
 versions in `results/power_study/sessionInfo.txt`).

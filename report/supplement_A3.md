@@ -162,9 +162,9 @@ with the results at `29dc42a`:
 
 | Hypothesis (as at `4b26331`) | Decision | Evidence |
 |---|---|---|
-| H1. Robust-anchor CML LRT: Type I within .05 ± .015 in every cell; power within .03 of the clean-anchor ceiling | Rejected | Type I .066–.080 in 8 of 16 one-way conditions; power on average .077 below the ceiling |
-| H2. One-way DIF inflates the tests whose first-pass anchor is all other items, growing with n; purification removes most of the excess only at n ≥ 150; mixed DIF cancels | Partly supported | Inflation .05–.09 under one-way DIF; mixed DIF cancels (.042–.064); but purification already removes most of the excess at every n |
-| H3. Baseline MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .42 / .60 with impact (the two-proportion prediction), not near 1 |
+| H1. Robust-anchor CML LRT: Type I within .05 ± .015 in every cell; power within .03 of the clean-anchor ceiling | Rejected | Power on average .077 below the ceiling (criterion .03); Type I .066–.080 in 8 of 16 one-way conditions, the smaller exceedances within Monte Carlo error |
+| H2. One-way DIF inflates the tests whose first-pass anchor is all other items, growing with n; purification removes most of the excess only at n ≥ 150; mixed DIF cancels | Partly supported | Inflation .05–.09 under one-way DIF; mixed DIF cancels (.042–.064); the prediction "only at n ≥ 150" was wrong: purification removes most of the excess at every n |
+| H3. Baseline MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .42 / .60 with impact (the two-proportion prediction); the prediction "near 1" was wrong |
 | H4. Bundle test: .80 at about 64 per group (0.8 logits, one-way); holds .05 without DIF | Supported | .70 at 50 and .95 at 100; .027–.077 without DIF (mean .049) |
 | H5. Valid anchor: .80 at 140–180 per group for 0.8 logits; below .80 at 250 for 0.5 logits | Supported | Clean-anchor benchmark about 150–160 per group; .61–.62 at 250 for 0.5 logits |
 | H6. The gate costs power at every n; ungated anchortest above .05 under one-way DIF | Supported | Gate cost .14 / .12 / .09 / .05 (mean power over the DIF conditions); ungated Type I .073–.117 |
