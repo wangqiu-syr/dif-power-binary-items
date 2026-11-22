@@ -101,5 +101,14 @@ function Table(tbl)
     total = total + w[j]
   end
   for j = 1, ncol do tbl.colspecs[j][2] = w[j] / total end
+  -- Yes / Semi / No cells (the methods-by-factors matrix) get a class for shading
+  for _, body in ipairs(tbl.bodies) do
+    for _, row in ipairs(body.body) do
+      for _, cell in ipairs(row.cells) do
+        local s = pandoc.utils.stringify(cell.contents):gsub("†", "")
+        if s == "Yes" or s == "Semi" or s == "No" then cell.attr.classes:insert("r-" .. s:lower()) end
+      end
+    end
+  end
   return tbl
 end

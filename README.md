@@ -17,9 +17,10 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
    likelihood-ratio test (difLRT) 32.3% and the Rasch tree 12.1% (1,000 replications). Exact
    calculations show that no valid test can exceed about .39 there: the ceiling is the design.
 2. **Three methods become nine.** The three methods differ in four components at once (statistic,
-   anchor, handling of impact, decision rule). A pre-specified simulation (40 conditions × 300
-   replications) used variants that change one or two components, plus two benchmarks, so that each
-   factor could be isolated.
+   anchor, design, decision rule). A pre-specified simulation (40 conditions × 300 replications)
+   used nine methods in three families (LRT, MIMIC, Rasch tree), each variant changing one or two
+   components, plus a θ-known benchmark, so that each factor could be isolated. Table 12 rates every
+   method on the twelve factors (Yes / Semi / No).
 3. **What raises power.** Sample size above all: with a valid anchor, .80 power per item needs about
    160–195 examinees per group for 0.8 logits and about 380 for 0.5 logits. At a fixed sample size,
    a one-sided test in a pre-registered direction (+.07 to +.12) and a joint test of the suspected
@@ -126,7 +127,7 @@ From the repository root:
 Rscript R/run_all.R
 ```
 
-QUICK mode rebuilds Tables 3, 4, 8 and 9 (`results/report_tables.md`) and Figures 1–5
+QUICK mode rebuilds Tables 3, 4, 8, 9 and 12 (`results/report_tables.md`) and Figures 1–5
 (`report/figures/`) from the stored results, and runs `tests/run_tests.R`. The tests regenerate
 replications 1–2 of Simulation 1 (seed 101) and replication 1 of Simulation 2's condition 1 and
 compare them with the stored statistics, and check that every generated table row appears in the
@@ -154,12 +155,13 @@ Then build the PDFs (see *Build the PDF*).
 | Table 4 | Exact power at 50 + 50, n for .80 | exact calculations (code with the follow-up study) → `R/report_tables.R` | `results/power/exact_items.csv`, `exact_n_for_power.csv` |
 | Table 5 | Factors that raise power and factors that control Type I error | — (text, from the exact results) | `results/power/exact_*.csv`, `lrt_calibration.csv` |
 | Table 6 | ADEMP summary of Simulation 2 | — (text) | Supplement A3 |
-| Table 7 | The nine methods: origin, component changed, factor tested | — (text) | — |
+| Table 7 | The nine methods by family (LRT, MIMIC, Rasch tree): what each changes, the factor it tests | — (text) | — |
 | Table 8 | Type I error, Simulation 2 | `R/08_power_study.R`, `R/09_power_study_summary.R` → `R/report_tables.R` | `results/power_study/rates_mcse.csv` |
 | Table 9 | Power, Simulation 2 | as Table 8 | `results/power_study/rates_mcse.csv` |
 | Table 10 | Effect of each factor | `R/09_power_study_summary.R`, `R/10_robust_anchor_check.R` | `results/power_study/rates.csv`, `robust_anchor_check.txt` |
 | Table 11 | Decisions on H1–H6 | — (text) | `results/power_study/rates.csv` |
-| Table 12 | Recommendations | — (text) | — |
+| Table 12 | Support of each method for the twelve factors (Yes / Semi / No) | `R/report_tables.R` | `results/power_study/factor_matrix.csv` (metrics and ratings) |
+| Table 13 | Recommendations | — (text) | — |
 | Figure 1 | Power and Type I error, Simulation 1 | `R/report_figures.R` | `report/figures/figure1.png` from `results/sim_summary_rep1000_MIMIC-LRT-TREE.csv` |
 | Figure 2 | Flag rate per item, Simulation 1 | `R/report_figures.R` | `report/figures/figure2.png` from `results/sim_item_rates_rep1000_MIMIC-LRT-TREE.csv` |
 | Figure 3 | Pilot: simulated against predicted | `R/report_figures.R` | `report/figures/figure3.png` from `results/power/pilot_rates.csv`, `exact_items.csv`, `exact_contamination_by_n.csv` |

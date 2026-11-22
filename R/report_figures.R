@@ -158,7 +158,7 @@ save_png("figure3.png", 6.5, 4.4, function() {
 
 ## ---- Figures 4 and 5: Simulation 2, Type I error and power by condition ---------------------
 rt <- read.csv(file.path("results", "power_study", "rates.csv"))
-STUDY <- c("mimic2011", "tree_gated", "mh_purified", "cml_purified", "anchortest", "mimic_msp", "cml_robust5")
+STUDY <- c("cml_purified", "mh_purified", "cml_robust5", "mimic2011", "mimic_msp", "tree_gated", "anchortest")   # LRT, MIMIC, tree families
 NS <- c(50, 100, 150, 250)
 study_panel <- function(z, what, ylim, title, ylab = "", band = NULL, ref = NULL, bench = FALSE) {
   plot(NA, xlim = c(35, 265), ylim = ylim, axes = FALSE, xlab = "", ylab = ylab)
