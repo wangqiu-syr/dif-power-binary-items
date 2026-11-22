@@ -46,3 +46,8 @@ tbody tr:first-child td { border-top: none; }
 td:first-child, th:first-child { padding-left: 0.1em; }
 
 .references p { padding-left: 2em; text-indent: -2em; font-size: 9.5pt; margin-bottom: 0.45em; }
+
+/* Math (pandoc --mathml; Chromium renders MathML Core) */
+math { font-family: "TeX Gyre Termes Math", "STIX Two Math", "Latin Modern Math", "Cambria Math", serif; font-size: 1.04em; }
+math[display="block"] { display: block; margin: 0.5em 0 0.7em; overflow-x: auto; }
+td math, th math { font-size: 1em; }

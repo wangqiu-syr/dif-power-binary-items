@@ -69,9 +69,9 @@ hypotheses fixed before the results (§5.5).
 ## 2. Data-generating mechanism
 
 **2.1 How are the parameters specified?** Parametric. The Rasch model with the 10 difficulties of
-the small-sample design, b = (−1, −1, −1, 0, 0, 0, 0, 1, 1, 1). Uniform DIF on i1, i5 and i10. θ is
-normal in each group: θ_R ~ N(0, 1); θ_F ~ N(0, 1) or N(−0.5, 1). Responses are drawn as in
-Simulation 1 (`respon_1pl()`, the 2011 draw order). Planned at `e2ae5a1`; specified in full at
+the baseline design, $b = (-1, -1, -1, 0, 0, 0, 0, 1, 1, 1)$. Uniform DIF on i1, i5 and i10. θ is
+normal in each group: $\theta_R \sim N(0, 1)$; $\theta_F \sim N(0, 1)$ or $N(-0.5, 1)$. Responses are
+drawn as in Simulation 1 (`respon_1pl()`, in the draw order of the original baseline study). Planned at `e2ae5a1`; specified in full at
 `4b26331`.
 
 **2.2 Factors.** Examinees per group; DIF direction; impact; DIF size. Unchanged from `e2ae5a1`.
@@ -90,7 +90,7 @@ plus 8 no-DIF conditions (each sample size × impact), for 40 conditions. Unchan
 
 ## 3. Estimands and other targets
 
-**3.1 Targets.** For each item j, the null hypothesis of no DIF (δ_j = 0). The methods are
+**3.1 Targets.** For each item j, the null hypothesis of no DIF ($\delta_j = 0$). The methods are
 evaluated as tests. Plan (`e2ae5a1`) also listed the bias of the DIF estimates as an outcome; it
 was not estimated (§6.4, deviation 4).
 
@@ -106,18 +106,18 @@ was not estimated (§6.4, deviation 4).
 |---|---|---|
 | Benchmark: θ known (logistic regression with θ as an offset) | not listed | run |
 | Benchmark: CML LRT with the true clean anchor | not listed | run |
-| MIMIC, 2011 specification | reference | run |
+| MIMIC, baseline specification | reference | run |
 | MIMIC with `f1 ON x` and scale purification (M-SP; Wang et al., 2009) | 4 | run (at most 4 passes) |
 | Mantel–Haenszel, purified, no continuity correction | 3 | run |
 | CML LRT, standard purification | 2 | run |
 | CML LRT, robust anchor | 1 | run with k = 5 and k = 3 |
 | Rasch tree (gate) + anchortest | reference | run |
 | anchortest without the gate | 5 | run |
-| difLRT as in 2011 | reference, "at 50 per group only" | run in the two n = 50, no-impact conditions (the lme4 rebuild of difR 6.1.0's statistic) |
+| difLRT as in the baseline study | reference, "at 50 per group only" | run in the two n = 50, no-impact conditions (the lme4 rebuild of difR 6.1.0's statistic) |
 | Bundle test of i1 + i5 + i10 | 6: against the purified anchor, one-way conditions only | the other seven items as the anchor, every condition |
 | One-sided α = .05 and Benjamini–Hochberg across the 10 items | 7 | applied afterwards to the saved statistics |
 
-Quantities saved for every method, item and replication: the signed statistic (z, or sign × √LR)
+Quantities saved for every method, item and replication: the signed statistic ($z$, or $\mathrm{sign} \times \sqrt{LR}$)
 and the two-sided p-value; for the bundle, its z and p. Per replication: the tree's global p-value,
 the number of M-SP passes, whether the robust anchor fell back to all other items, and the run
 time. All are in `results/power_study/replications.rds` and `replications_info.csv`.
@@ -134,8 +134,10 @@ the same n and impact); fit failures. Not done: bias.
 
 **5.2 How is Monte Carlo uncertainty computed and reported?** Not specified in the plan, beyond the
 precision targets in 5.3. The report gives, for every rate, an MCSE that treats the replication as
-the cluster (items in one data set are correlated): MCSE = √(Var(f_r − R t_r) / n_rep) / mean(t_r),
-where R is the pooled rate and replication r has f_r flags among t_r tests. Computed after the study
+the cluster (items in one data set are correlated):
+$\text{MCSE}(R) = \sqrt{\mathrm{Var}(f_r - R\, t_r) / n_{\text{rep}}} \,/\, \bar t$,
+where $R$ is the pooled rate, replication $r$ has $f_r$ flags among $t_r$ tests, and $\bar t$ is
+the mean number of tests per replication. Computed after the study
 by `R/report_tables.R` (report, Appendix A2).
 
 **5.3 How many replications?** Plan (`e2ae5a1`): 500 per condition ("power to ±.02, Type I to
@@ -163,7 +165,7 @@ with the results at `29dc42a`:
 |---|---|---|
 | H1. Robust-anchor CML LRT: Type I within .05 ± .015 in every cell; power within .03 of the clean-anchor ceiling | Rejected | Type I .066–.080 in 8 of 16 one-way conditions; power on average .077 below the ceiling |
 | H2. One-way DIF inflates the tests whose first-pass anchor is all other items, growing with n; purification removes most of the excess only at n ≥ 150; mixed DIF cancels | Partly supported | Inflation .05–.09 under one-way DIF; mixed DIF cancels (.042–.064); but purification already removes most of the excess at every n |
-| H3. 2011 MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .41 / .60 with impact (the two-proportion prediction), not near 1 |
+| H3. Baseline MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .41 / .60 with impact (the two-proportion prediction), not near 1 |
 | H4. Bundle test: .80 at about 64 per group (0.8 logits, one-way); holds .05 without DIF | Supported | .70 at 50 and .95 at 100; .027–.077 without DIF (mean .049) |
 | H5. Valid anchor: .80 at 140–180 per group for 0.8 logits; below .80 at 250 for 0.5 logits | Supported | Clean-anchor benchmark 147–162 per group; .61–.62 at 250 for 0.5 logits |
 | H6. The gate costs power at every n; ungated anchortest above .05 under one-way DIF | Supported | Gate cost .14 / .12 / .09 / .05; ungated Type I .075–.117 |
@@ -194,7 +196,7 @@ compares it with the stored statistics; `R/run_all.R FULL` reruns the whole stud
 | # | Plan | As run | When decided |
 |---|---|---|---|
 | 1 | 500 replications per condition | 300 | `4b26331`, from the pilot's timing, before the full run |
-| 2 | difLRT "at 50 per group only" | Only the two n = 50, no-impact conditions (one-way DIF of 0.8 and no DIF), where it is the 2011 reference | `4b26331`, before the full run |
+| 2 | difLRT "at 50 per group only" | Only the two n = 50, no-impact conditions (one-way DIF of 0.8 and no DIF), where it is the baseline reference | `4b26331`, before the full run |
 | 3 | Bundle test against the purified anchor, one-way conditions only | The other seven items as the anchor; every condition | `4b26331`, before the full run |
 | 4 | Bias of the DIF estimates as an outcome | Not estimated: the estimates were not saved. Part of the follow-up study (https://osf.io/35nvh/) | at the analysis |
 | 5 | H2, H4, H5 as at `e2ae5a1` | Extended at `4b26331` (texts in §7) | `4b26331` |
@@ -214,6 +216,9 @@ Other disclosures:
   figures and tables were produced after `29dc42a` from the saved results. They change no rate.
 
 ## 7. The hypotheses as committed
+
+In the quoted texts, "2011" refers to the baseline study and its specifications (the report's
+Sections 1–3); the texts are left as committed.
 
 **At `e2ae5a1`** (`docs/power.md` §7, "Hypotheses, from sections 2–3 and 5"), verbatim:
 

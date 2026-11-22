@@ -9,7 +9,10 @@ BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0
 LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
 
 locale:
-[1] C
+ [1] LC_CTYPE=C.UTF-8    LC_NUMERIC=C        LC_TIME=C          
+ [4] LC_COLLATE=C        LC_MONETARY=C       LC_MESSAGES=C      
+ [7] LC_PAPER=C          LC_NAME=C           LC_ADDRESS=C       
+[10] LC_TELEPHONE=C      LC_MEASUREMENT=C    LC_IDENTIFICATION=C
 
 time zone: Etc/UTC
 tzcode source: system (glibc)

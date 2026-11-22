@@ -25,13 +25,16 @@ build() {
   local html="$here/$name.html" pdf="$report/$name.pdf"
   pandoc "$report/$name.md" \
     --from markdown-implicit_figures+pipe_tables+lists_without_preceding_blankline \
-    --to html5 --standalone --embed-resources \
+    --to html5 --standalone --embed-resources --mathml \
     --resource-path "$report" \
     --lua-filter "$here/filter.lua" \
     --css "$here/style.css" \
     --metadata pagetitle="$title" \
     --metadata lang=en-US \
     --output "$html"
+  # pandoc 3.1 marks every parenthesis in MathML as stretchy; inline ones then grow around hats
+  # and subscripts. Nothing in the report needs stretching, so switch it off.
+  sed -i 's/stretchy="true"/stretchy="false"/g' "$html"
   if command -v node >/dev/null && node -e "require('playwright')" >/dev/null 2>&1; then
     node "$here/print.js" "$html" "$pdf" "$title"
   else

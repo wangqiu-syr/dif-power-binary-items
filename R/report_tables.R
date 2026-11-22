@@ -1,12 +1,13 @@
 ## =============================================================================
 ## report_tables.R
 ## Replication-level Monte Carlo SEs (MCSEs) for Simulation 2, and the report's results tables
-## (Tables 3, 4, 7 and 8), built only from files already in results/. No simulation is run.
+## (Tables 3, 4, 8 and 9), built only from files already in results/. No simulation is run.
 ##   Rscript R/report_tables.R
 ## Writes results/power_study/rates_mcse.csv, results/report_tables.md (the tables as inserted
 ## into report/report.md) and results/report_tables_log.txt (check against rates.csv,
 ## sessionInfo()). Base R only.
 ## =============================================================================
+if (!isTRUE(l10n_info()[["UTF-8"]])) invisible(suppressWarnings(Sys.setlocale("LC_CTYPE", "C.UTF-8")))
 out <- "results"
 
 rates <- read.csv("results/power_study/rates.csv")
@@ -80,19 +81,21 @@ f2 <- function(x) sub("^0\\.", ".", sprintf("%.2f", x))
 md <- character(0)
 add <- function(...) md <<- c(md, ...)
 lab <- c(oracle_theta = "Benchmark: θ known", cml_oracle = "Benchmark: CML LRT, true clean anchor",
-         mimic2011 = "MIMIC, 2011 specification", mimic_msp = "MIMIC with scale purification (M-SP)",
+         mimic2011 = "MIMIC, baseline specification", mimic_msp = "MIMIC with scale purification (M-SP)",
          mh_purified = "Mantel–Haenszel, purified", cml_purified = "CML LRT, purified",
          cml_robust5 = "CML LRT, robust anchor (k = 5)", tree_gated = "Rasch tree + anchortest",
          anchortest = "anchortest without the tree's gate")
 
 s1 <- read.csv("results/sim_summary_rep1000_MIMIC-LRT-TREE.csv")
 add("TABLE_SIM1", "| Method | Power (3 DIF items) | Type I error (7 clean items) |", "|---|---|---|")
-for (i in seq_len(nrow(s1))) add(sprintf("| %s | %s [%s, %s] | %s [%s, %s] |", s1$method[i],
+s1_lab <- c("MIMIC, baseline specification (z \u2265 1.96, one-sided)", "IRT-LRT (difLRT, purified)", "Rasch tree + anchored Wald test")
+s1_lab <- s1_lab[match(substr(s1$method, 1, 4), c("MIMI", "IRT-", "Rasc"))]
+for (i in seq_len(nrow(s1))) add(sprintf("| %s | %s [%s, %s] | %s [%s, %s] |", s1_lab[i],
   f3(s1$power[i]), f3(s1$power_lo[i]), f3(s1$power_hi[i]), f3(s1$type1[i]), f3(s1$type1_lo[i]), f3(s1$type1_hi[i])))
 
 ex <- read.csv("results/power/exact_items.csv"); d <- ex$dif > 0
 ng <- read.csv("results/power/exact_n_for_power.csv")
-add("", "TABLE_EXACT", "| | θ known | Item's own proportions (= 2011 MIMIC) | Clean anchor | All other items as anchor |",
+add("", "TABLE_EXACT", "| | θ known | Item's own proportions (= baseline MIMIC) | Clean anchor | All other items as anchor |",
     "|---|---|---|---|---|",
     sprintf("| Power at 50 + 50, mean of i1, i5, i10 | %s | %s | %s | %s |", f2(mean(ex$power_known_theta[d])),
             f2(mean(ex$power_marginal[d])), f2(mean(ex$power_clean_anchor[d])), f2(mean(ex$power_all_anchor[d]))),

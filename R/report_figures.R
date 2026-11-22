@@ -26,7 +26,7 @@ COL <- c(mimic2011 = "#2a78d6", difLRT = "#eb6834", tree_gated = "#1baf7a", mh_p
          cml_purified = "#e87ba4", anchortest = "#008300", mimic_msp = "#6250d6", cml_robust5 = "#e34948")
 PCH <- c(mimic2011 = 16, difLRT = 17, tree_gated = 15, mh_purified = 18,
          cml_purified = 1, anchortest = 0, mimic_msp = 2, cml_robust5 = 5)
-LAB <- c(mimic2011 = "MIMIC, 2011 specification", difLRT = "IRT-LRT (difLRT, purified)",
+LAB <- c(mimic2011 = "MIMIC, baseline specification", difLRT = "IRT-LRT (difLRT, purified)",
          tree_gated = "Rasch tree + anchortest", mh_purified = "Mantel–Haenszel, purified",
          cml_purified = "CML LRT, purified", anchortest = "anchortest without the gate",
          mimic_msp = "MIMIC with scale purification", cml_robust5 = "CML LRT, robust anchor (k = 5)")
@@ -50,7 +50,7 @@ vgrid <- function(at) abline(v = at, col = GRID, lwd = 0.8)
 s1 <- read.csv(file.path("results", "sim_summary_rep1000_MIMIC-LRT-TREE.csv"))
 s1$key <- c("mimic2011", "difLRT", "tree_gated")[match(substr(s1$method, 1, 4), c("MIMI", "IRT-", "Rasc"))]
 stopifnot(!anyNA(s1$key))
-s1_lab <- c(mimic2011 = "MIMIC, 2011 specification\n(z ≥ 1.96, one-sided)",
+s1_lab <- c(mimic2011 = "MIMIC, baseline specification\n(z ≥ 1.96, one-sided)",
             difLRT = "IRT-LRT\n(difLRT, purified)", tree_gated = "Rasch tree\n+ anchored Wald test")
 save_png("figure1.png", 6.5, 2.6, function() {
   par(mfrow = c(1, 2), mar = c(3.4, 0.8, 1.8, 1), oma = c(0, 10.5, 0, 0))
@@ -97,7 +97,7 @@ save_png("figure2.png", 6.5, 3.3, function() {
   mtext("Shaded: DIF items (the rate is power). Unshaded: clean items (Type I error). Dashed: .05. Bars: 95% CI.",
         side = 1, line = 2.9, adj = 0, cex = 0.75, col = INK2)
   legend("top", inset = c(0, -0.11), horiz = TRUE, xpd = NA, bty = "n",
-         legend = c("MIMIC, 2011 specification", "IRT-LRT (difLRT, purified)", "Rasch tree + anchored Wald test"),
+         legend = c("MIMIC, baseline specification", "IRT-LRT (difLRT, purified)", "Rasch tree + anchored Wald test"),
          col = COL[fig2_keys], pch = PCH[fig2_keys], lwd = 1.6, cex = 0.9, text.col = INK, seg.len = 1.2)
 })
 
@@ -119,8 +119,8 @@ pred <- function(method, n, what) {
     NA_real_)
 }
 show <- c(oracle_theta = "Benchmark: θ known", marginal = "Benchmark: group proportions",
-          mimic2011 = "MIMIC, 2011 specification", mimic_anchored = "MIMIC, f ~ x, all other items as anchor",
-          mimic_oracle = "MIMIC, f ~ x, true clean anchor", lrt_difR = "difLRT, purified (as in 2011)",
+          mimic2011 = "MIMIC, baseline specification", mimic_anchored = "MIMIC, f ~ x, all other items as anchor",
+          mimic_oracle = "MIMIC, f ~ x, true clean anchor", lrt_difR = "difLRT, purified (baseline)",
           lrt_oracle = "difLRT statistic, true clean anchor", cml_none = "CML LRT, all other items as anchor",
           cml_purified = "CML LRT, purified", cml_oracle = "CML LRT, true clean anchor",
           mh_purified_nocc = "Mantel–Haenszel, purified", mh_oracle_nocc = "Mantel–Haenszel, true clean anchor",

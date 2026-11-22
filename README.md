@@ -12,22 +12,23 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
 
 ## Key findings
 
-1. **At 50 examinees per group, every method has low power.** With 10 Rasch items and 0.8 logits
-   of DIF on 3 of them, over 1,000 replications MIMIC flagged a DIF item 34.8% of the time, the IRT
-   likelihood-ratio test (difLRT) 32.3% and the Rasch tree 12.1% (Table 3).
-2. **The ceiling is the design.** Exact calculations over all 1,024 response patterns show that a
-   test that knew every examinee's ability would reach .39, and any valid anchor-based test about
-   .36 (Table 4).
-3. **difLRT's extra power is false positives.** It flagged 12.2% of clean items at a nominal 5%. At
-   a true 5% level its power is .22, the same as a correctly computed conditional-ML LRT. The Rasch
-   tree loses power at its global gate; the 2011-style MIMIC is valid only when the groups have
-   equal means.
-4. **What raises power** (a pre-specified simulation, 40 conditions × 300 replications). With a
-   valid anchor, .80 power per item needs about 160–195 examinees per group for 0.8 logits and
-   about 380 for 0.5 logits. Purified CML LRT, purified Mantel–Haenszel and MIMIC with scale
-   purification are interchangeable and hold the 5% level. At a fixed sample size, a one-sided
-   test in a pre-registered direction and a joint test of the suspected items raise power; a
-   median-based robust anchor did not.
+1. **The baseline: at 50 examinees per group, every method has low power.** With 10 Rasch items and
+   0.8 logits of DIF on 3 of them, MIMIC flagged a DIF item 34.8% of the time, the IRT
+   likelihood-ratio test (difLRT) 32.3% and the Rasch tree 12.1% (1,000 replications). Exact
+   calculations show that no valid test can exceed about .39 there: the ceiling is the design.
+2. **Three methods become nine.** The three methods differ in four components at once (statistic,
+   anchor, handling of impact, decision rule). A pre-specified simulation (40 conditions × 300
+   replications) used variants that change one or two components, plus two benchmarks, so that each
+   factor could be isolated.
+3. **What raises power.** Sample size above all: with a valid anchor, .80 power per item needs about
+   160–195 examinees per group for 0.8 logits and about 380 for 0.5 logits. At a fixed sample size,
+   a one-sided test in a pre-registered direction (+.07 to +.12) and a joint test of the suspected
+   items (.70 at 50 per group) raise power; a median-based robust anchor did not.
+4. **What controls Type I error.** A correctly computed statistic, purification that re-tests every
+   item and, for MIMIC, modelling impact. Purified CML LRT, purified Mantel–Haenszel and MIMIC with
+   scale purification are interchangeable and hold about .05; difLRT's extra power was false
+   positives, and the baseline MIMIC flagged 17–60% of clean items when the groups differed by
+   0.5 SD.
 
 ## Overview
 
@@ -57,8 +58,9 @@ from its seed (see *Controlled randomness*).
   Its results, which the report uses (Table 4, §4.1, Table 5, Figure 3), are in
   `results/power/exact_*.csv`. The code is released with the follow-up study, registered on OSF
   (https://osf.io/35nvh/).
-- **The 2011 materials** (the original Mplus and difR code, Mplus input and output, data files) and
-  the script that compared lavaan with the 2011 Mplus output (`R/01_single_dataset.R`).
+- **The original materials of the baseline study** (Mplus and difR code, Mplus input and output,
+  data files) and the script that compared lavaan with the original Mplus output
+  (`R/01_single_dataset.R`).
   [`docs/rebuild.md`](docs/rebuild.md) describes them and the checks made; the check's output is
   kept in `results/01_single_dataset_output.txt` and `results/mimic_lavaan_vs_mplus42.csv`.
 
@@ -79,7 +81,9 @@ That is why the script numbers skip 01 and 05.
   0.16.3). The tests check that R 4.3.3 on Linux reproduces its MIMIC and Rasch-tree statistics
   (and its difLRT statistics when difR is installed).
 - `R/report_tables.R`, `R/report_figures.R` and the tests' report checks use base R only.
-- Building the PDF needs pandoc (3.1 or later) and Chromium or Google Chrome.
+- Building the PDF needs pandoc (3.1 or later), Chromium or Google Chrome, and an OpenType math
+  font for the formulas (TeX Gyre Termes Math, Ubuntu package `fonts-texgyre-math`; STIX Two Math
+  or Cambria Math also work).
 
 Install the packages once, from R:
 
@@ -94,7 +98,7 @@ Every script sets its own seeds; nothing depends on the order in which parallel 
 | Part | Script | Seeds |
 |---|---|---|
 | Simulation 1 | `R/02_simulation.R` | 8 jobs of 125 replications, seeds 101–108 (`set.seed(seed)` once, then the r-th data set of the stream); the Rasch tree's tie-breaking: `seed + 100000 + r` |
-| Pilot | `R/04_power_pilot.R` | 2011 design: seeds 101 and 102 (the same data sets as Simulation 1); no-DIF design: 301; 150 per group: 401; per job `seed × 1000 + r` |
+| Pilot | `R/04_power_pilot.R` | Baseline design: seeds 101 and 102 (the same data sets as Simulation 1); no-DIF design: 301; 150 per group: 401; per job `seed × 1000 + r` |
 | LRT calibration | `R/07_lrt_calibration.R` | 501 |
 | Simulation 2 | `R/08_power_study.R` | replication r of condition c: `20261119 + 1000c + r`; anchortest's tie-breaking: that seed + 7 |
 | Robust-anchor check | `R/10_robust_anchor_check.R` | Simulation 2's seeds for condition 25; `set.seed(2)` for the normal approximation |
@@ -122,7 +126,7 @@ From the repository root:
 Rscript R/run_all.R
 ```
 
-QUICK mode rebuilds Tables 3, 4, 7 and 8 (`results/report_tables.md`) and Figures 1–5
+QUICK mode rebuilds Tables 3, 4, 8 and 9 (`results/report_tables.md`) and Figures 1–5
 (`report/figures/`) from the stored results, and runs `tests/run_tests.R`. The tests regenerate
 replications 1–2 of Simulation 1 (seed 101) and replication 1 of Simulation 2's condition 1 and
 compare them with the stored statistics, and check that every generated table row appears in the
@@ -144,17 +148,18 @@ Then build the PDFs (see *Build the PDF*).
 
 | Exhibit | Content | Script | Output / source file |
 |---|---|---|---|
-| Table 1 | The three methods | — (text) | — |
+| Table 1 | The three baseline methods, by component | — (text) | — |
 | Table 2 | ADEMP summary of Simulation 1 | — (text) | — |
 | Table 3 | Power and Type I error, Simulation 1 | `R/02_simulation.R`, `R/03_figures.R` → `R/report_tables.R` | `results/sim_summary_rep1000_MIMIC-LRT-TREE.csv` |
 | Table 4 | Exact power at 50 + 50, n for .80 | exact calculations (code with the follow-up study) → `R/report_tables.R` | `results/power/exact_items.csv`, `exact_n_for_power.csv` |
-| Table 5 | Levers and predicted gains | — (text, from the exact results) | `results/power/exact_*.csv`, `lrt_calibration.csv` |
+| Table 5 | Factors that raise power and factors that control Type I error | — (text, from the exact results) | `results/power/exact_*.csv`, `lrt_calibration.csv` |
 | Table 6 | ADEMP summary of Simulation 2 | — (text) | Supplement A3 |
-| Table 7 | Type I error, Simulation 2 | `R/08_power_study.R`, `R/09_power_study_summary.R` → `R/report_tables.R` | `results/power_study/rates_mcse.csv` |
-| Table 8 | Power, Simulation 2 | as Table 7 | `results/power_study/rates_mcse.csv` |
-| Table 9 | Levers at a fixed sample size | `R/09_power_study_summary.R`, `R/10_robust_anchor_check.R` | `results/power_study/rates.csv`, `robust_anchor_check.txt` |
-| Table 10 | Decisions on H1–H6 | — (text) | `results/power_study/rates.csv` |
-| Table 11 | Recommendations | — (text) | — |
+| Table 7 | The nine methods: origin, component changed, factor tested | — (text) | — |
+| Table 8 | Type I error, Simulation 2 | `R/08_power_study.R`, `R/09_power_study_summary.R` → `R/report_tables.R` | `results/power_study/rates_mcse.csv` |
+| Table 9 | Power, Simulation 2 | as Table 8 | `results/power_study/rates_mcse.csv` |
+| Table 10 | Effect of each factor | `R/09_power_study_summary.R`, `R/10_robust_anchor_check.R` | `results/power_study/rates.csv`, `robust_anchor_check.txt` |
+| Table 11 | Decisions on H1–H6 | — (text) | `results/power_study/rates.csv` |
+| Table 12 | Recommendations | — (text) | — |
 | Figure 1 | Power and Type I error, Simulation 1 | `R/report_figures.R` | `report/figures/figure1.png` from `results/sim_summary_rep1000_MIMIC-LRT-TREE.csv` |
 | Figure 2 | Flag rate per item, Simulation 1 | `R/report_figures.R` | `report/figures/figure2.png` from `results/sim_item_rates_rep1000_MIMIC-LRT-TREE.csv` |
 | Figure 3 | Pilot: simulated against predicted | `R/report_figures.R` | `report/figures/figure3.png` from `results/power/pilot_rates.csv`, `exact_items.csv`, `exact_contamination_by_n.csv` |
@@ -188,7 +193,7 @@ bash report/pdf/build.sh
 ```
 
 This converts `report/report.md` and `report/supplement_A3.md` to HTML with pandoc
-(`report/pdf/filter.lua`, `report/pdf/style.css`) and prints them to PDF with headless Chromium
+(`report/pdf/filter.lua`, `report/pdf/style.css`; formulas as MathML) and prints them to PDF with headless Chromium
 (`report/pdf/print.js`, through Playwright if it is installed, otherwise the Chromium command
 line). Set `CHROME=/path/to/chrome` if Chromium is not found.
 
