@@ -486,10 +486,11 @@ line: .80.
 - **0.5 logits is a different study.** Even the clean-anchor benchmark reaches only .61–.62 at 250
   per group; .80 needs about 380 (H5). The purified methods reach .43–.52 at 250 under one-way DIF
   and need more.
-- **The purified tests are nearly interchangeable.** Purified CML LRT, purified MH and M-SP differ
-  by at most .055 in power and .02 in Type I error in any condition. The purified CML LRT is
-  slightly but consistently ahead: on average .015 above MH (never significantly below it) and .010
-  above M-SP, by paired MCSEs (`results/power_study/paired_diff_mcse.csv`). With mixed DIF they come within .06 of the clean-anchor
+- **The purified tests are nearly interchangeable.** On average the purified CML LRT has .010–.015
+  more power than MH and M-SP. Because the methods share data sets, 300 replications can detect this
+  (paired MCSEs; Morris et al., 2019), but it is below the .03 margin fixed for H1. The largest gaps
+  in any one condition are .055 in power (about 15 examinees per group) and .02 in Type I error
+  (`results/power_study/paired_diff_mcse.csv`). With mixed DIF they come within .06 of the clean-anchor
   ceiling (within .03 in most conditions).
   With one-way DIF they lose .03–.19 of power to contamination.
 - **The baseline MIMIC's lead is an artifact.** It has the highest raw power at $\mu$ = 0 only
