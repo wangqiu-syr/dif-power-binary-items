@@ -7,7 +7,7 @@ results behind every number in it.
 November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
 
 - **Report:** [`report/report.pdf`](report/report.pdf) (source [`report/report.md`](report/report.md))
-- **Supplement A3**, the retrospective ADEMP-PreReg form for Simulation 2:
+- **Supplement A3**, the retrospective ADEMP-PreReg form (Siepe et al., 2024) for Simulation 2:
   [`report/supplement_A3.pdf`](report/supplement_A3.pdf) (source [`report/supplement_A3.md`](report/supplement_A3.md))
 
 ## Key findings
@@ -22,12 +22,12 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
    components, plus a θ-known benchmark, so that each factor could be isolated. Table 11 rates every
    method on the twelve factors (Yes / Semi / No).
 3. **What raises power.** Sample size above all: for 0.8 logits, .80 power per item needs about
-   160–195 examinees per group with a purified anchor (150–160 with a known clean anchor); for 0.5
-   logits, even a known clean anchor needs about 380. At a fixed sample size,
-   a one-sided test in a pre-registered direction (+.07 to +.12) and a joint test of the suspected
-   items (.70 at 50 per group) raise power; a median-based robust anchor did not.
+   160–195 examinees per group with a purified anchor (about 150–160 with a known clean anchor);
+   for 0.5 logits, even a known clean anchor needs about 380. At a fixed sample size, a one-sided
+   test in a pre-registered direction (+.07 to +.12) and a joint test of the suspected items (.70
+   at 50 per group) raise power; a median-based robust anchor did not.
 4. **What controls Type I error.** A correctly computed statistic, purification that re-tests every
-   item and, for MIMIC, modelling impact. Purified CML LRT, purified Mantel–Haenszel and MIMIC with
+   item and, for MIMIC, modeling impact. Purified CML LRT, purified Mantel–Haenszel and MIMIC with
    scale purification are interchangeable and hold about .05; difLRT's extra power was false
    positives, and the baseline MIMIC flagged 17–60% of clean items when the groups differed by
    0.5 SD.
@@ -35,9 +35,9 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
 ## Overview
 
 The code in this repository reproduces every table and figure of the report from two Monte Carlo
-simulations, both on simulated data:
+simulations, both on simulated data. This README follows the template of Vilhuber et al. (2022).
 
-- **Simulation 1** (report §3): the small-sample design, 50 + 50 examinees, 1,000 replications,
+- **Simulation 1** (report §3): the baseline design, 50 + 50 examinees, 1,000 replications,
   three methods (MIMIC in lavaan, `difR::difLRT`, the Rasch tree in psychotree).
 - **Simulation 2** (report §5): the pre-specified power study, 40 conditions × 300 replications
   (12,000 data sets), nine methods in three families plus a θ-known benchmark, a three-item robust
@@ -186,7 +186,7 @@ The simulation scripts also draw working versions of the figures in `results/fig
 | `R/report_tables.R`, `R/report_figures.R` | The report's tables (with MCSEs) and figures, from `results/` only |
 | `R/run_all.R` | QUICK / FULL entry point |
 | `results/` | Simulation 1 (`sim_*_rep1000_MIMIC-LRT-TREE.csv`), `power/` (exact results, pilot, calibration), `power_study/` (Simulation 2: rates, MCSEs, every statistic in `replications.rds`, the pilot), `report_tables.md`, working figures |
-| `docs/` | `methods.md` (models and code), `difLRT.md`, `power.md` (why power is low; the plan with H1–H5), `power_study.md` (Simulation 2 in full), `rebuild.md` (the 2011 rebuild), `decisions.md` (D1–D22) |
+| `docs/` | `methods.md` (models and code), `difLRT.md`, `power.md` (why power is low; the plan with H1–H5), `power_study.md` (Simulation 2 in full), `rebuild.md` (the rebuild of the baseline study), `decisions.md` (D1–D22) |
 | `tests/` | `run_tests.R` and the tests |
 
 ## Build the PDF
@@ -208,7 +208,7 @@ https://github.com/wangqiu-syr/dif-power-binary-items
 
 Citation metadata: [`CITATION.cff`](CITATION.cff).
 
-## Licence
+## License
 
 - Code: MIT ([`LICENSE`](LICENSE)).
 - Report, supplement, figures and documentation: CC BY 4.0 ([`LICENSE-report`](LICENSE-report)).
@@ -223,7 +223,7 @@ the results and is responsible for the content.
 
 Siepe, B. S., Bartoš, F., Morris, T. P., Boulesteix, A.-L., Heck, D. W., & Pawel, S. (2024).
 Simulation studies for methodological research in psychology: A standardized template for
-planning, preregistration, and reporting. *Psychological Methods.* https://doi.org/10.1037/met0000695
+planning, preregistration, and reporting. *Psychological Methods.* Advance online publication. https://doi.org/10.1037/met0000695
 
 Vilhuber, L., Connolly, M., Koren, M., Llull, J., & Morrow, P. (2022). *A template README for
 social science replication packages* (Version 1.1). Zenodo. https://doi.org/10.5281/zenodo.7293838

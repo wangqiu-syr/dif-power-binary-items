@@ -35,7 +35,7 @@ identical at `4b26331` and `29dc42a`.
 **Limits of this evidence.** Git commit times are set by the committing machine's clock. GitHub
 kept a server-side record of the push of `29dc42a` (2026-11-19 09:33:23 UTC) but not of the two
 earlier commits. The hash chain fixes the order of the commits; the clock times are
-self-documented. In the terms of the TOP guidelines this is disclosure, not registration.
+self-documented. In the terms of the TOP guidelines (Nosek et al., 2015) this is disclosure, not registration.
 
 ## 0. General information
 
@@ -166,7 +166,7 @@ with the results at `29dc42a`:
 | H2. One-way DIF inflates the tests whose first-pass anchor is all other items, growing with n; purification removes most of the excess only at n ≥ 150; mixed DIF cancels | Partly supported | Inflation .05–.09 under one-way DIF; mixed DIF cancels (.042–.064); but purification already removes most of the excess at every n |
 | H3. Baseline MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .42 / .60 with impact (the two-proportion prediction), not near 1 |
 | H4. Bundle test: .80 at about 64 per group (0.8 logits, one-way); holds .05 without DIF | Supported | .70 at 50 and .95 at 100; .027–.077 without DIF (mean .049) |
-| H5. Valid anchor: .80 at 140–180 per group for 0.8 logits; below .80 at 250 for 0.5 logits | Supported | Clean-anchor benchmark 147–162 per group; .61–.62 at 250 for 0.5 logits |
+| H5. Valid anchor: .80 at 140–180 per group for 0.8 logits; below .80 at 250 for 0.5 logits | Supported | Clean-anchor benchmark about 150–160 per group; .61–.62 at 250 for 0.5 logits |
 | H6. The gate costs power at every n; ungated anchortest above .05 under one-way DIF | Supported | Gate cost .14 / .12 / .09 / .05 (mean power over the DIF conditions); ungated Type I .073–.117 |
 
 ## 6. Other
@@ -255,6 +255,8 @@ the 0.5-logit prediction; H6 is new. H1 and H3 are unchanged.
 
 Halpin, P. F. (2024). Differential item functioning via robust scaling. *Psychometrika, 89*(3), 796–821. https://doi.org/10.1007/s11336-024-09957-6
 
-Siepe, B. S., Bartoš, F., Morris, T. P., Boulesteix, A.-L., Heck, D. W., & Pawel, S. (2024). Simulation studies for methodological research in psychology: A standardized template for planning, preregistration, and reporting. *Psychological Methods.* https://doi.org/10.1037/met0000695
+Nosek, B. A., Alter, G., Banks, G. C., Borsboom, D., Bowman, S. D., Breckler, S. J., Buck, S., Chambers, C. D., Chin, G., Christensen, G., Contestabile, M., Dafoe, A., Eich, E., Freese, J., Glennerster, R., Goroff, D., Green, D. P., Hesse, B., Humphreys, M., . . . Yarkoni, T. (2015). Promoting an open research culture. *Science, 348*(6242), 1422–1425. https://doi.org/10.1126/science.aab2374
+
+Siepe, B. S., Bartoš, F., Morris, T. P., Boulesteix, A.-L., Heck, D. W., & Pawel, S. (2024). Simulation studies for methodological research in psychology: A standardized template for planning, preregistration, and reporting. *Psychological Methods.* Advance online publication. https://doi.org/10.1037/met0000695
 
 Wang, W.-C., Shih, C.-L., & Yang, C.-C. (2009). The MIMIC method with scale purification for detecting differential item functioning. *Educational and Psychological Measurement, 69*(5), 713–731. https://doi.org/10.1177/0013164409332228
