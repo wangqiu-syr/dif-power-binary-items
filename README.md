@@ -1,4 +1,4 @@
-# Why item-level DIF tests have low power in small samples, and what it takes to raise it
+# A wider window, the same wall: Two decades of item-level DIF tests for binary items
 
 MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items: a report, with the code and
 results behind every number in it.
@@ -202,9 +202,8 @@ line). Set `CHROME=/path/to/chrome` if Chromium is not found.
 
 ## How to cite
 
-Wang, Q. (2026). *Why item-level DIF tests have low power in small samples, and what it takes to
-raise it: MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items* (Version 1.0.0)
-[Report and code]. Zenodo. DOI to be added at release.
+Wang, Q. (2026). *A wider window, the same wall: Two decades of item-level DIF tests for binary items*
+(Version 1.0.0) [Report and code]. Zenodo. DOI to be added at release.
 https://github.com/wangqiu-syr/dif-power-binary-items
 
 Citation metadata: [`CITATION.cff`](CITATION.cff).

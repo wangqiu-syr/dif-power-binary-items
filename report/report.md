@@ -1,4 +1,4 @@
-# Why item-level DIF tests have low power in small samples, and what it takes to raise it: MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items
+# A wider window, the same wall: Two decades of item-level DIF tests for binary items
 
 [Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Version 1.0.0 · November 2026 · DOI: assigned by Zenodo at release (see the repository README)
 
@@ -49,7 +49,9 @@ trait. They are routine in test development and scale validation, and are often 
 of a few hundred examinees or fewer per group (Zwick, 2012; Scott et al., 2009). Three families
 of methods are common for binary items: the MIMIC model (Finch, 2005; Woods, 2009), IRT
 likelihood-ratio tests (Thissen et al., 1988; Magis et al., 2010), and
-model-based recursive partitioning in the form of the Rasch tree (Strobl et al., 2015).
+model-based recursive partitioning in the form of the Rasch tree (Strobl et al., 2015). The methods
+compared here span two decades of this work, from the MIMIC model (Finch, 2005) to an anchor based
+on robust scaling (Halpin, 2024).
 
 The starting point is a **baseline design** at the small-sample end of DIF studies: 10 Rasch
 items, 50 examinees per group, and three items with 0.8 logits of DIF. Its setting draws on the simulation study of Vaughn and Wang
@@ -665,6 +667,10 @@ anchor, and for 0.5 logits about 380 even with a known clean anchor. Type I cont
 purification that re-tests every item, and a model for impact. Below the needed sample size, a
 pre-registered direction or a pre-specified joint test is the honest way to gain power.
 
+Two decades of new methods have opened a wider window on DIF in binary items, but none has moved
+the wall that small samples set. The newest results on robust scaling are mixed (Halpin, 2026;
+Robitzsch, 2026); the window is still opening.
+
 ## Data and code availability
 
 Code, results and this report: https://github.com/wangqiu-syr/dif-power-binary-items (version
@@ -690,6 +696,8 @@ Finch, H. (2005). The MIMIC model as a method for detecting DIF: Comparison with
 
 Halpin, P. F. (2024). Differential item functioning via robust scaling. *Psychometrika, 89*(3), 796–821. https://doi.org/10.1007/s11336-024-09957-6
 
+Halpin, P. F. (2026). *Differential test functioning via robust scaling* (arXiv:2409.03502v6) [Preprint]. arXiv. https://doi.org/10.48550/arXiv.2409.03502
+
 Holland, P. W., & Thayer, D. T. (1988). Differential item performance and the Mantel–Haenszel procedure. In H. Wainer & H. I. Braun (Eds.), *Test validity* (pp. 129–145). Erlbaum.
 
 Kopf, J., Zeileis, A., & Strobl, C. (2015a). Anchor selection strategies for DIF analysis: Review, assessment, and new approaches. *Educational and Psychological Measurement, 75*(1), 22–56. https://doi.org/10.1177/0013164414529792
@@ -699,6 +707,8 @@ Kopf, J., Zeileis, A., & Strobl, C. (2015b). A framework for anchor methods and 
 Magis, D., Béland, S., Tuerlinckx, F., & De Boeck, P. (2010). A general framework and an R package for the detection of dichotomous differential item functioning. *Behavior Research Methods, 42*(3), 847–862. https://doi.org/10.3758/BRM.42.3.847
 
 Morris, T. P., White, I. R., & Crowther, M. J. (2019). Using simulation studies to evaluate statistical methods. *Statistics in Medicine, 38*(11), 2074–2102. https://doi.org/10.1002/sim.8086
+
+Robitzsch, A. (2026). Halpin's differential test functioning via robust linking: A comparison of bisquare and L<sub>0</sub> loss functions. *Information, 17*(5), 428. https://doi.org/10.3390/info17050428
 
 Rosseel, Y. (2012). lavaan: An R package for structural equation modeling. *Journal of Statistical Software, 48*(2), 1–36. https://doi.org/10.18637/jss.v048.i02
 

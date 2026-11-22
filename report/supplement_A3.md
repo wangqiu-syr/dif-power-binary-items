@@ -1,6 +1,6 @@
 # Supplement A3. Retrospective ADEMP-PreReg form for Simulation 2
 
-[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Supplement to *Why item-level DIF tests have low power in small samples, and what it takes to raise it* · Version 1.0.0 · November 2026
+[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Supplement to *A wider window, the same wall: Two decades of item-level DIF tests for binary items* · Version 1.0.0 · November 2026
 
 Text: CC BY 4.0. Repository: https://github.com/wangqiu-syr/dif-power-binary-items
 
@@ -39,8 +39,7 @@ self-documented. In the terms of the TOP guidelines this is disclosure, not regi
 
 ## 0. General information
 
-**0.1 Title.** Simulation 2 of *Why item-level DIF tests have low power in small samples, and what
-it takes to raise it: MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items*: the
+**0.1 Title.** Simulation 2 of *A wider window, the same wall: Two decades of item-level DIF tests for binary items*: the
 pre-specified power study.
 
 **0.2 Contributors.** Qiu Wang (Syracuse University) designed the study, checked the results and

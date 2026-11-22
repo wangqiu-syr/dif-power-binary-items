@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this report or its code, please cite it as below."
 type: software
-title: "Why item-level DIF tests have low power in small samples, and what it takes to raise it: MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items"
+title: "A wider window, the same wall: Two decades of item-level DIF tests for binary items"
 version: 1.0.0
 date-released: 2026-11-22
 license: MIT

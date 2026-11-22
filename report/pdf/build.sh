@@ -46,5 +46,5 @@ build() {
   echo "Wrote $pdf"
 }
 
-build report "Why item-level DIF tests have low power in small samples"
+build report "A wider window, the same wall: Two decades of item-level DIF tests for binary items"
 build supplement_A3 "Supplement A3: retrospective ADEMP-PreReg form"

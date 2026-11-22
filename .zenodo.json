@@ -1,5 +1,5 @@
 {
-  "title": "Why item-level DIF tests have low power in small samples, and what it takes to raise it: MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items",
+  "title": "A wider window, the same wall: Two decades of item-level DIF tests for binary items",
   "upload_type": "software",
   "version": "1.0.0",
   "description": "<p>A report, with the code and results behind every number in it, on the power of item-level differential item functioning (DIF) tests for binary items in small samples.</p><p>Simulation 1 (10 Rasch items, 50 examinees per group, 0.8 logits of DIF on 3 items, 1,000 replications) compares MIMIC, the IRT likelihood-ratio test (difR::difLRT) and the Rasch tree. Exact calculations over all response patterns show that low power is mainly a property of the design. A pre-specified simulation (40 conditions x 300 replications, hypotheses fixed in version control before the results) tests what raises power: sample size, a valid anchor, a correctly computed likelihood-ratio test, one-sided and joint tests, and dropping the Rasch tree's gate.</p><p>R/run_all.R rebuilds every table and figure from the stored results, or reruns both simulations. Code: MIT. Report, figures and documentation: CC BY 4.0.</p>",
