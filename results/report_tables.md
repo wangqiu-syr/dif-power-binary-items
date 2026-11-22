@@ -13,7 +13,7 @@ TABLE_EXACT
 | n per group for .80 (range over i1, i5, i10) | 125–165 | 151–193 | 142–181 | 221–297 |
 
 TABLE_TYPE1
-| Method | No DIF, μ = 0 | No DIF, μ = 0.5 | One-way 0.8, μ = 0 | One-way 0.8, μ = 0.5 | Mixed 0.8, μ = 0.5 |
+| Method | No DIF, μ = 0 | No DIF, μ = 0.5 | One-way DIF 0.8, μ = 0 | One-way DIF 0.8, μ = 0.5 | Mixed DIF 0.8, μ = 0.5 |
 |---|---|---|---|---|---|
 | Benchmark: θ known | .049 / .052 / .057 / .050 | .048 / .049 / .054 / .053 | .050 / .054 / .057 / .053 | .044 / .055 / .046 / .045 | .047 / .051 / .052 / .048 |
 | **LRT family** | | | | | |
@@ -30,7 +30,7 @@ TABLE_TYPE1
 | anchortest without the tree's gate | .074 / .063 / .073 / .067 | .064 / .064 / .066 / .063 | .095 / .117 / .101 / .085 | .086 / .111 / .096 / .073 | .070 / .079 / .077 / .071 |
 
 TABLE_POWER
-| Method | One-way 0.8, μ = 0 | One-way 0.8, μ = 0.5 | Mixed 0.8, μ = 0.5 | One-way 0.5, μ = 0 | Mixed 0.5, μ = 0.5 |
+| Method | One-way DIF 0.8, μ = 0 | One-way DIF 0.8, μ = 0.5 | Mixed DIF 0.8, μ = 0.5 | One-way DIF 0.5, μ = 0 | Mixed DIF 0.5, μ = 0.5 |
 |---|---|---|---|---|---|
 | Benchmark: θ known | .382 / .707 / .832 / .963 | .394 / .678 / .847 / .970 | .384 / .658 / .820 / .957 | .162 / .362 / .474 / .662 | .202 / .327 / .443 / .682 |
 | **LRT family** | | | | | |

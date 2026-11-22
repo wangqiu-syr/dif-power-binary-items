@@ -1,11 +1,11 @@
 ## =============================================================================
 ## report_tables.R
 ## Replication-level Monte Carlo SEs (MCSEs) for Simulation 2, and the report's results tables
-## (Tables 3, 4, 8 and 9) and the methods-by-factors matrix (Table 12), built only from files
+## (Tables 3, 4, 8 and 9) and the methods-by-factors matrix (Table 11), built only from files
 ## already in results/. No simulation is run.
 ##   Rscript R/report_tables.R
 ## Writes results/power_study/rates_mcse.csv, results/power_study/factor_matrix.csv (the metrics
-## and ratings behind Table 12), results/report_tables.md (the tables as inserted into
+## and ratings behind Table 11), results/report_tables.md (the tables as inserted into
 ## report/report.md) and results/report_tables_log.txt (check against rates.csv, sessionInfo()).
 ## Base R only.
 ## =============================================================================
@@ -119,11 +119,11 @@ cellv <- function(dir, dif, imp, v, meth) {             # values at n = 50 / 100
   if (all(is.na(x))) return("—")
   paste(ifelse(is.na(x), "—", f3(x)), collapse = " / ") }
 panels_t1 <- list(c("none", 0, 0, "No DIF, μ = 0"), c("none", 0, 0.5, "No DIF, μ = 0.5"),
-                  c("one-way", 0.8, 0, "One-way 0.8, μ = 0"), c("one-way", 0.8, 0.5, "One-way 0.8, μ = 0.5"),
-                  c("mixed", 0.8, 0.5, "Mixed 0.8, μ = 0.5"))
-panels_pw <- list(c("one-way", 0.8, 0, "One-way 0.8, μ = 0"), c("one-way", 0.8, 0.5, "One-way 0.8, μ = 0.5"),
-                  c("mixed", 0.8, 0.5, "Mixed 0.8, μ = 0.5"), c("one-way", 0.5, 0, "One-way 0.5, μ = 0"),
-                  c("mixed", 0.5, 0.5, "Mixed 0.5, μ = 0.5"))
+                  c("one-way", 0.8, 0, "One-way DIF 0.8, μ = 0"), c("one-way", 0.8, 0.5, "One-way DIF 0.8, μ = 0.5"),
+                  c("mixed", 0.8, 0.5, "Mixed DIF 0.8, μ = 0.5"))
+panels_pw <- list(c("one-way", 0.8, 0, "One-way DIF 0.8, μ = 0"), c("one-way", 0.8, 0.5, "One-way DIF 0.8, μ = 0.5"),
+                  c("mixed", 0.8, 0.5, "Mixed DIF 0.8, μ = 0.5"), c("one-way", 0.5, 0, "One-way DIF 0.5, μ = 0"),
+                  c("mixed", 0.5, 0.5, "Mixed DIF 0.5, μ = 0.5"))
 tab <- function(key, panels, v) {
   add("", key, paste0("| Method | ", paste(sapply(panels, `[`, 4), collapse = " | "), " |"),
       paste0("|---|", paste(rep("---", length(panels)), collapse = "|"), "|"))
@@ -139,8 +139,8 @@ mx <- function(v, sub) round(max(m[[v]][sub], na.rm = TRUE), 3)
 add("", "MCSE_NOTE", sprintf("largest MCSE: Type I %s (no-DIF cells %s); power %s",
     mx("type1_mcse", m$method %in% meth), mx("type1_mcse", m$method %in% meth & m$dif == 0),
     mx("power_mcse", m$method %in% meth)))
-## ---- Table 12: nine methods x twelve factors (Yes / Semi / No) -----------------------------------
-## Each factor of Table 5 has a rule (README of the report, Table 12 note). Statistic- and
+## ---- Table 11: nine methods x twelve factors (Yes / Semi / No) -----------------------------------
+## Each factor of Table 5 has a rule (README of the report, Table 11 note). Statistic- and
 ## anchor-based factors (A2, A3, A4, B3, B4) are rated for the gated tree from its item tests without
 ## the gate (the anchortest rows), because the gate is a separate decision rule. difLRT is rated from
 ## the two n = 50, no-impact conditions in which it ran; "—" = not run.

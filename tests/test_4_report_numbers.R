@@ -2,7 +2,7 @@
 rep_md <- readLines(file.path("report", "report.md"), encoding = "UTF-8")
 tab <- readLines(file.path("results", "report_tables.md"), encoding = "UTF-8")
 rows <- tab[grepl("^\\| ", tab)]
-check(sprintf("all %d generated table rows (Tables 3, 4, 8, 9, 12) appear verbatim in report.md", length(rows)),
+check(sprintf("all %d generated table rows (Tables 3, 4, 8, 9, 11) appear verbatim in report.md", length(rows)),
       all(rows %in% rep_md))
 r <- read.csv(file.path("results", "power_study", "rates.csv"))
 m <- read.csv(file.path("results", "power_study", "rates_mcse.csv"))

@@ -184,8 +184,9 @@ study_panel <- function(z, what, ylim, title, ylab = "", band = NULL, ref = NULL
   axis(2, at = at, labels = f2(at), col = GRID, col.ticks = INK2, cex.axis = 0.85)
   mtext(title, side = 3, line = 0.3, adj = 0, font = 2, col = INK, cex = 0.8)
 }
-cond_title <- function(dr, im) sprintf("%s, %s", if (dr == "one-way") "One-way" else if (dr == "mixed") "Mixed" else "No DIF",
-                                       if (im == 0) "μ = 0" else "μ = 0.5")
+cond_title <- function(dr, im, dif = NULL) sprintf("%s%s, %s",
+  if (dr == "one-way") "One-way DIF" else if (dr == "mixed") "Mixed DIF" else "No DIF",
+  if (is.null(dif)) "" else paste0(" ", dif), if (im == 0) "μ = 0" else "μ = 0.5")
 study_legend <- function(bench, ncol) {
   legend("top", legend = c(LAB[STUDY], if (bench) c("Benchmark: θ known", "Benchmark: CML LRT, true clean anchor")),
          col = c(COL[STUDY], if (bench) rep(MUTED, 2)), pch = c(PCH[STUDY], if (bench) c(NA, NA)),
@@ -206,10 +207,10 @@ save_png("figure4.png", 6.5, 6.2, function() {
   par(mar = c(2.4, 2.6, 1.6, 0.4))
   for (dif in c(0.8, 0.5)) for (dr in c("one-way", "mixed")) for (im in c(0, 0.5)) {
     study_panel(rt[rt$direction == dr & rt$impact == im & rt$dif == dif, ], "type1", t1_lim,
-                paste0(cond_title(dr, im), ", DIF ", dif), band = c(0.035, 0.065), ref = 0.05)
+                cond_title(dr, im, dif), band = c(0.035, 0.065), ref = 0.05)
   }
   mtext("Examinees per group", side = 1, outer = TRUE, line = 0.6, col = INK, cex = 0.9)
-  mtext("Type I error (two-sided α = .05)", side = 2, outer = TRUE, line = 0.6, col = INK, cex = 0.9, las = 0)
+  mtext("Type I error (α = .05)", side = 2, outer = TRUE, line = 0.6, col = INK, cex = 0.9, las = 0)
 })
 
 ## Figure 5: power. Rows: DIF of 0.8 and 0.5 logits; columns: direction x impact; legend below.
@@ -218,12 +219,12 @@ save_png("figure5.png", 6.5, 4.9, function() {
   par(mar = c(2.4, 2.6, 1.6, 0.4), oma = c(0, 2, 0, 0))
   for (dif in c(0.8, 0.5)) for (dr in c("one-way", "mixed")) for (im in c(0, 0.5)) {
     study_panel(rt[rt$direction == dr & rt$impact == im & rt$dif == dif, ], "power", c(0, 1),
-                paste0(cond_title(dr, im), ", DIF ", dif), ref = 0.8, bench = TRUE)
+                cond_title(dr, im, dif), ref = 0.8, bench = TRUE)
   }
   par(mar = c(0, 0, 1.6, 0)); plot.new()
   mtext("Examinees per group", side = 3, line = 0.2, col = INK, cex = 0.9)
   study_legend(TRUE, 3)
-  mtext("Power (two-sided α = .05)", side = 2, outer = TRUE, line = 0.6, col = INK, cex = 0.9, las = 0, adj = 0.72)
+  mtext("Power (α = .05)", side = 2, outer = TRUE, line = 0.6, col = INK, cex = 0.9, las = 0, adj = 0.72)
 })
 
 cat("Wrote", paste(file.path(out, sprintf("figure%d.png", 1:5)), collapse = ", "), "\n")

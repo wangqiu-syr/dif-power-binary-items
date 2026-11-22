@@ -8,17 +8,17 @@ methods, the hypotheses (fixed before the results), and the results (section 5).
 
 1. **Sample size is the lever.** For 0.8 logits a test with a known clean anchor reaches .80 at
    150–160 per group; the realistic methods need about 160–195. For 0.5 logits, 250 per group
-   gives .43–.63, and .80 needs about 380 (section 5.3).
+   gives .43–.63, and even the clean anchor needs about 380 for .80 (section 5.3).
 2. **At 50 + 50 no method rescues the 2011 design.** The valid item tests have power .21–.25 against
    a clean-anchor ceiling of .34. At a true 5% level the 2011 difLRT has .22, the same as the
    correctly computed CML LRT (.22); the rest of its .32 came from false positives (sections 5.2,
    5.4).
 3. **The 2011 MIMIC has the highest power only because it assumes no impact.** With the focal
-   group 0.5 SD lower it flags 17%, 29%, 41% and 60% of clean items at 50, 100, 150 and 250 per
+   group 0.5 SD lower it flags 17%, 29%, 42% and 60% of clean items at 50, 100, 150 and 250 per
    group, exactly as the two-proportion math predicts (section 5.2).
 4. **Purified CML LRT, purified Mantel–Haenszel and MIMIC with scale purification are
    interchangeable.** With mixed DIF they reach the clean-anchor ceiling at 5%. With one-way DIF
-   they run at .05–.09 and lose .03–.15 of power to contamination.
+   they run at .05–.09 and lose .03–.19 of power to contamination.
 5. **The robust anchor did not help (H1 rejected).** Its power is below the purified LRT's (by .03
    on average) and its Type I error still exceeds .065 in 8 one-way cells (section 5.5).
 6. **What does raise power at a given n:** a one-sided test when the direction is fixed in advance
@@ -215,7 +215,7 @@ rarely flagged while the clean items are flagged 17–63% of the time.
 
 Three patterns. First, **with mixed DIF the purified tests are at the clean-anchor ceiling**: the
 contamination cancels and purification has nothing to fix. Second, **with one-way DIF they lose
-.03–.15** against the clean anchor. Third, **n dominates**. Fitting
+.03–.19** against the clean anchor. Third, **n dominates**. Fitting
 the noncentrality as proportional to n (power.md §6, lever 1) to each method's four points gives
 the n per group for .80 at 0.8 logits: 147–162 with the clean anchor, 157–193 for the purified CML
 LRT, 161–193 for MH, 158–195 for M-SP. At 0.5 logits the clean anchor needs 375–392 per group.
@@ -316,7 +316,7 @@ pre-specified.
 
 **The tree's gate** costs power at every n: anchortest without the gate finds .14, .12, .09 and
 .05 more DIF items on average (at 50, 100, 150, 250). Without the gate, though, anchortest's Type I
-error is above .05 everywhere: .063–.074 with no DIF, .058–.085 with mixed DIF and .075–.117 with
+error is above .05 everywhere: .063–.074 with no DIF, .058–.085 with mixed DIF and .073–.117 with
 one-way DIF. Its anchor is selected from the same data and its Wald tests are liberal, so the
 excess is not only contamination.
 
@@ -326,10 +326,10 @@ excess is not only contamination.
 |---|---|---|
 | H1. Robust anchor holds .05 ± .015 everywhere; power within .03 of the ceiling | **Rejected** | Type I .066–.080 in 8 of 16 one-way cells; power gap .077 on average (section 5.5) |
 | H2. One-way DIF inflates the first-pass-anchor tests, growing with n; purification fixes most only at n ≥ 150; mixed DIF cancels | **Partly supported** | Inflation yes (.05–.09), mixed cancels yes (.042–.064). But purification already removes most of the exact excess at every n (.069 / .086 / .082 / .058 against .083 / .118 / .153 / .22 for 0.8 logits); the remainder peaks at 100–150 for 0.8 logits and is still growing at 250 for 0.5 |
-| H3. 2011 MIMIC nominal without impact, near 1 with impact | **Supported in kind, wrong in size** | .046–.061 without impact; with impact .17 / .29 / .41 / .60, matching the two-proportion prediction (.17 / .29 / .40 / .60). "Near 1" was a misstatement of power.md §3.1's own math: it holds only for larger n |
+| H3. 2011 MIMIC nominal without impact, near 1 with impact | **Supported in kind, wrong in size** | .046–.061 without impact; with impact .17 / .29 / .42 / .60, matching the two-proportion prediction (.17 / .29 / .40 / .60). "Near 1" was a misstatement of power.md §3.1's own math: it holds only for larger n |
 | H4. Bundle reaches .80 at about 64 per group (0.8, one-way) and holds .05 | **Supported** | .70 at 50 and .95 at 100 (≈ .80 at 64); rejection rate .027–.077 with no DIF, mean .049 |
 | H5. With a valid anchor, .80 at 140–180 per group for 0.8 logits; below .80 at 250 for 0.5 | **Supported** | Clean anchor: 147–162 per group; .61–.62 at 250 for 0.5 logits (about 380 needed, a little above the predicted 350) |
-| H6. The gate costs power at every n; ungated anchortest is above .05 under one-way DIF | **Supported** | Gate cost .14 / .12 / .09 / .05; ungated Type I .075–.117 under one-way DIF (and .058–.085 elsewhere) |
+| H6. The gate costs power at every n; ungated anchortest is above .05 under one-way DIF | **Supported** | Gate cost .14 / .12 / .09 / .05; ungated Type I .073–.117 under one-way DIF (and .058–.085 elsewhere) |
 
 ### 5.8 What this means for the three methods
 
@@ -344,8 +344,8 @@ excess is not only contamination.
 - **Rasch tree.** The gate halves power at 50 + 50 and still costs .05 at 250. With a known binary
   grouping the tree adds nothing over the anchored item tests; it is for unknown or continuous
   covariates.
-- **For any of them,** power of .80 per item needs about 160–195 per group for 0.8 logits and
-  about 380 for 0.5. Below that, a pre-registered direction (one-sided test) and a pre-specified
+- **For any of them,** power of .80 per item needs about 160–195 per group for 0.8 logits, and for
+  0.5 logits about 380 even with a known clean anchor (more with purification under one-way DIF). Below that, a pre-registered direction (one-sided test) and a pre-specified
   bundle are the honest ways to gain power.
 
 ## 6. Files

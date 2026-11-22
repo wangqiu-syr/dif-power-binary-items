@@ -32,7 +32,7 @@ flowchart TD
     R --> O["Power = flag rate on i1, i5, i10 (true DIF)<br/>Type I error = flag rate on the other 7 items"]
 ```
 
-### Checking lavaan against Mplus before simulating (`R/01_single_dataset.R`)
+### Checking lavaan against Mplus before simulating (`R/01_single_dataset.R`, not in this repository; see `rebuild.md`)
 
 This check ran in the author's development repository; the 2011 files and the script are not
 part of this repository ([rebuild.md](rebuild.md)). Its output is in

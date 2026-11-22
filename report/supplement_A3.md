@@ -33,7 +33,7 @@ figures). Neither changed the design or the hypotheses: §2–4 of `docs/power_s
 identical at `4b26331` and `29dc42a`.
 
 **Limits of this evidence.** Git commit times are set by the committing machine's clock. GitHub
-kept a server-side record of the push of `29dc42a` (2026-11-19 09:33:23 UTC) but none of the two
+kept a server-side record of the push of `29dc42a` (2026-11-19 09:33:23 UTC) but not of the two
 earlier commits. The hash chain fixes the order of the commits; the clock times are
 self-documented. In the terms of the TOP guidelines this is disclosure, not registration.
 
@@ -113,7 +113,7 @@ was not estimated (§6.4, deviation 4).
 | CML LRT, robust anchor | 1 | run with k = 5 and k = 3 |
 | Rasch tree (gate) + anchortest | reference | run |
 | anchortest without the gate | 5 | run |
-| difLRT as in the baseline study | reference, "at 50 per group only" | run in the two n = 50, no-impact conditions (the lme4 rebuild of difR 6.1.0's statistic) |
+| difLRT as in the baseline study | reference, "at 50 per group only" | run in two n = 50, no-impact conditions, one-way DIF of 0.8 and no DIF (the lme4 rebuild of difR 6.1.0's statistic) |
 | Bundle test of i1 + i5 + i10 | 6: against the purified anchor, one-way conditions only | the other seven items as the anchor, every condition |
 | One-sided α = .05 and Benjamini–Hochberg across the 10 items | 7 | applied afterwards to the saved statistics |
 
@@ -165,10 +165,10 @@ with the results at `29dc42a`:
 |---|---|---|
 | H1. Robust-anchor CML LRT: Type I within .05 ± .015 in every cell; power within .03 of the clean-anchor ceiling | Rejected | Type I .066–.080 in 8 of 16 one-way conditions; power on average .077 below the ceiling |
 | H2. One-way DIF inflates the tests whose first-pass anchor is all other items, growing with n; purification removes most of the excess only at n ≥ 150; mixed DIF cancels | Partly supported | Inflation .05–.09 under one-way DIF; mixed DIF cancels (.042–.064); but purification already removes most of the excess at every n |
-| H3. Baseline MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .41 / .60 with impact (the two-proportion prediction), not near 1 |
+| H3. Baseline MIMIC: nominal without impact, near 1 with impact | Partly supported | .046–.061 without impact; .17 / .29 / .42 / .60 with impact (the two-proportion prediction), not near 1 |
 | H4. Bundle test: .80 at about 64 per group (0.8 logits, one-way); holds .05 without DIF | Supported | .70 at 50 and .95 at 100; .027–.077 without DIF (mean .049) |
 | H5. Valid anchor: .80 at 140–180 per group for 0.8 logits; below .80 at 250 for 0.5 logits | Supported | Clean-anchor benchmark 147–162 per group; .61–.62 at 250 for 0.5 logits |
-| H6. The gate costs power at every n; ungated anchortest above .05 under one-way DIF | Supported | Gate cost .14 / .12 / .09 / .05; ungated Type I .075–.117 |
+| H6. The gate costs power at every n; ungated anchortest above .05 under one-way DIF | Supported | Gate cost .14 / .12 / .09 / .05 (mean power over the DIF conditions); ungated Type I .073–.117 |
 
 ## 6. Other
 

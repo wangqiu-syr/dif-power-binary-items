@@ -15,7 +15,7 @@ the clean items less often (Type I error). This note covers difLRT, and compares
 the method it was paired with in 2011.
 
 The cross-check in this replication is something else: the lavaan MIMIC results compared with
-the 2011 Mplus 4.2 output (`R/01_single_dataset.R`). That shows lavaan is a faithful stand-in for Mplus.
+the 2011 Mplus 4.2 output (`R/01_single_dataset.R`, not in this repository; see `rebuild.md`). That shows lavaan is a faithful stand-in for Mplus.
 
 ## What difLRT does
 
