@@ -28,7 +28,7 @@ November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
    at 50 per group) raise power; a median-based robust anchor did not.
 4. **What controls Type I error.** A correctly computed statistic, purification that re-tests every
    item and, for MIMIC, modeling impact. Purified CML LRT, purified Mantel–Haenszel and MIMIC with
-   scale purification are interchangeable and hold about .05 without DIF or with mixed DIF
+   scale purification are nearly interchangeable and hold about .05 without DIF or with mixed DIF
    (.05–.09 with one-way DIF); difLRT's extra power was false
    positives, and the baseline MIMIC flagged 17–60% of clean items when the groups differed by
    0.5 SD.
@@ -105,6 +105,7 @@ Every script sets its own seeds; nothing depends on the order in which parallel 
 | Pilot | `R/04_power_pilot.R` | Baseline design: seeds 101 and 102 (the same data sets as Simulation 1); no-DIF design: 301; 150 per group: 401; per job `seed × 1000 + r` |
 | LRT calibration | `R/07_lrt_calibration.R` | 501 |
 | Simulation 2 | `R/08_power_study.R` | replication r of condition c: `20261119 + 1000c + r`; anchortest's tie-breaking: that seed + 7 |
+| Paired MCSEs | `R/11_paired_mcse.R` | none (reads the stored statistics) |
 | Robust-anchor check | `R/10_robust_anchor_check.R` | Simulation 2's seeds for condition 25; `set.seed(2)` for the normal approximation |
 | Tests | `tests/` | the seeds above, to regenerate stored replications |
 
@@ -169,7 +170,7 @@ Then build the PDFs (see *Build the PDF*).
 | Figure 3 | Pilot: simulated against predicted | `R/report_figures.R` | `report/figures/figure3.png` from `results/power/pilot_rates.csv`, `exact_items.csv`, `exact_contamination_by_n.csv` |
 | Figure 4 | Type I error, Simulation 2 | `R/report_figures.R` | `report/figures/figure4.png` from `results/power_study/rates.csv` |
 | Figure 5 | Power, Simulation 2 | `R/report_figures.R` | `report/figures/figure5.png` from `results/power_study/rates.csv` |
-| Appendix A1–A2 | All conditions with MCSEs | `R/report_tables.R` | `results/power_study/rates_mcse.csv` |
+| Appendix A1–A2 | All conditions with MCSEs; paired MCSEs of differences between methods | `R/report_tables.R`, `R/11_paired_mcse.R` | `results/power_study/rates_mcse.csv`, `paired_diff_mcse.csv` |
 
 The simulation scripts also draw working versions of the figures in `results/figures/`
 (`fig1`–`fig5`); the report uses the redrawn ones in `report/figures/`.
@@ -182,7 +183,7 @@ The simulation scripts also draw working versions of the figures in `results/fig
 | `R/functions.R` | Data generation; MIMIC (lavaan), difLRT and Rasch-tree wrappers |
 | `R/02_simulation.R`, `R/03_figures.R` | Simulation 1; merging the parallel runs, pooled rates with 95% CIs, working figures |
 | `R/04_power_pilot.R`, `R/06_power_summary.R`, `R/07_lrt_calibration.R` | The pilot and its summaries; the calibration of difLRT's statistic |
-| `R/08_power_study.R`, `R/09_power_study_summary.R`, `R/10_robust_anchor_check.R` | Simulation 2: the run, the summaries (every flag rule), the robust-anchor diagnostic |
+| `R/08_power_study.R`, `R/09_power_study_summary.R`, `R/10_robust_anchor_check.R`, `R/11_paired_mcse.R` | Simulation 2: the run, the summaries (every flag rule), the robust-anchor diagnostic, paired MCSEs |
 | `R/power/` | `lrt_variants.R` (difLRT rebuilt in lme4), `pilot_methods.R` (benchmarks, Mantel–Haenszel, MIMIC variants, the tree with and without its gate), `study_methods.R` (CML LRTs, robust anchor, bundle test, M-SP) |
 | `R/report_tables.R`, `R/report_figures.R` | The report's tables (with MCSEs) and figures, from `results/` only |
 | `R/run_all.R` | QUICK / FULL entry point |

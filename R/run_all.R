@@ -85,5 +85,6 @@ if (mode == "FULL") {
 ## QUICK (and the end of FULL): tables, figures, tests
 run(file.path("R", "report_tables.R"), log = "report_tables.log")
 run(file.path("R", "report_figures.R"), log = "report_figures.log")
+run(file.path("R", "11_paired_mcse.R"), log = "paired_mcse.log")
 run(file.path("tests", "run_tests.R"))
 cat("All done. Build the PDF with: bash report/pdf/build.sh\n")

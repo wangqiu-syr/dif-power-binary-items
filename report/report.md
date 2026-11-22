@@ -6,41 +6,25 @@ Text and figures: CC BY 4.0. Code: MIT. Code, results and how to reproduce every
 
 ## Abstract
 
-Item-level tests of differential item functioning (DIF) are often run on small samples, and they
-often find little. This report asks which design factors and which parts of a DIF method decide
-the power and the Type I error of these tests for binary items, and what it takes to reach .80
-power per item while holding the 5% level.
+Item-level tests of differential item functioning (DIF) are often run on small samples. This
+report asks which design factors and method components decide their power and Type I error for
+binary items, and what reaches .80 power per item at the 5% level.
 
-A baseline design at the small-sample end of DIF studies (10 Rasch items, 50 examinees per group,
-0.8 logits of DIF on three items) gave low power for all three common methods: .35 for MIMIC, .32
-for the IRT likelihood-ratio test (which also flagged 12% of clean items) and .12 for the Rasch
-tree. Exact calculations showed that no valid two-sided test of a
-single item can exceed .39 in this design. The three methods differ in four components at once (the test
-statistic, the anchor, the design, meaning how group differences in ability are handled, and the
-decision rule), so the baseline comparison cannot say which component costs power or inflates
-Type I error.
+In a baseline design (10 Rasch items, 50 examinees per group, 0.8 logits of DIF on three items),
+power was .35 for MIMIC, .32 for the IRT likelihood-ratio test (with 12% false flags) and .12 for
+the Rasch tree; exact calculations cap any valid two-sided test of a single item at .39. The methods
+differ in statistic, anchor, design and decision rule, so I built nine variants that each change
+one or two components and compared them in Simulation 2: 40 conditions crossing sample size (50–250
+per group), DIF size, DIF direction and group ability difference, with six hypotheses fixed before
+the full run.
 
-I therefore built a family around each baseline method (LRT, MIMIC and Rasch tree), with variants
-that each change one or two components: nine methods in three families, including an LRT that is
-told which items are clean, plus a test that knows every examinee's ability as a ceiling. The
-pre-specified Simulation 2 tested them: 40 conditions crossing sample size (50 to
-250 per group), DIF size, DIF direction and group ability differences, 300 replications each, with
-six hypotheses fixed before the full run (H1–H5 before any Simulation 2 data were generated, H6
-after a 20-replication pilot). Sample size is the main lever for power: for 0.8 logits, .80 per
-item needs about 160–195 examinees per group with a purified anchor (about 150–160 with a known clean
-anchor); for 0.5 logits, even a known clean anchor needs about 380. At a fixed sample size, a one-sided test in a pre-registered direction (+.07 to +.12) and a joint test
-of the suspected items (.70 at 50 per group) raise power; a median-based robust anchor did not.
-Type I error is held by a correctly computed statistic, by purification that re-tests every item
-and, for MIMIC, by modeling the group difference in ability. The purified conditional-ML
-likelihood-ratio test, purified Mantel–Haenszel and MIMIC with scale purification were
-interchangeable; they held about .05 without DIF or with mixed DIF and ran at .05–.09 with one-way
-DIF, whereas the baseline MIMIC flagged 17–60% of clean items when
-the groups differed by 0.5 SD. The Rasch tree had the lowest power in small samples because its
-global test acts as a gate: its item tests run only after a 9-df test of all items rejects, which
-happened in 29% of the baseline samples. Without the gate, anchortest found .05–.14 more DIF items
-at 50–250 per group but exceeded the 5% level (.06–.12), so with a known binary grouping the tree
-adds nothing over direct item tests; it is built for unknown or continuous covariates. The study is
-reported in the ADEMP structure with Monte Carlo standard errors.
+Sample size is the main lever: .80 per item needs about 160–195 examinees per group for 0.8 logits,
+and about 380 for 0.5 logits even with a known clean anchor. At a fixed sample size, a one-sided
+test in a pre-registered direction and a joint test of the suspected items raise power; a
+median-based robust anchor did not. Type I error is held by a correct statistic, purification that
+re-tests every item and, for MIMIC, modeling the ability difference. The Rasch tree's global test
+is a gate that costs power when the groups are known. Reporting follows ADEMP, with Monte Carlo
+standard errors.
 
 *Keywords:* differential item functioning, statistical power, MIMIC, likelihood-ratio test, Rasch
 tree, Mantel–Haenszel, simulation study, small samples
@@ -398,9 +382,11 @@ the one-sided rule (A5), Benjamini–Hochberg (B6) and size-adjusted power.
 H1–H5 were fixed in version control before any Simulation 2 data were generated; H6, the design
 and the methods followed with a 20-replication pilot, before the full run. Appendix A3 gives the
 timeline, the deviations from the plan and the execution. Rates are pooled over replications, with
-MCSEs that treat the replication as the cluster (Appendix A2). The largest MCSE is .014 for Type I
-error and .024 for power, so differences of .03 or less between methods in one condition are within
-noise.
+MCSEs that treat the replication as the cluster (Appendix A2). The largest MCSE of a rate is .014
+for Type I error and .024 for power. Because the methods are applied to the same data sets, the
+difference between two methods in one condition is paired; its MCSE is about .01 for power (at
+most .023) and .005 for Type I error (at most .018). Differences in power of .03 or less between
+methods are therefore not interpreted unless they are consistent across conditions.
 
 ### 5.2 Results: power and Type I error
 
@@ -500,8 +486,10 @@ line: .80.
 - **0.5 logits is a different study.** Even the clean-anchor benchmark reaches only .61–.62 at 250
   per group; .80 needs about 380 (H5). The purified methods reach .43–.52 at 250 under one-way DIF
   and need more.
-- **The purified tests are interchangeable.** Purified CML LRT, purified MH and M-SP are within
-  noise of each other in every condition. With mixed DIF they come within .06 of the clean-anchor
+- **The purified tests are nearly interchangeable.** Purified CML LRT, purified MH and M-SP differ
+  by at most .055 in power and .02 in Type I error in any condition. The purified CML LRT is
+  slightly but consistently ahead: on average .015 above MH (never significantly below it) and .010
+  above M-SP, by paired MCSEs (`results/power_study/paired_diff_mcse.csv`). With mixed DIF they come within .06 of the clean-anchor
   ceiling (within .03 in most conditions).
   With one-way DIF they lose .03–.19 of power to contamination.
 - **The baseline MIMIC's lead is an artifact.** It has the highest raw power at $\mu$ = 0 only
@@ -522,7 +510,7 @@ Table 10 collects, for each factor of Table 5, the comparison that isolates it a
 | A1. Sample size | Every method, 50 → 250 per group | Clean-anchor benchmark, one-way 0.8, $\mu$ = 0: .343 / .633 / .797 / .934; .80 at about 150–160 per group (benchmark) and about 160–195 (purified methods). For 0.5 logits (benchmark): .61–.62 at 250; .80 needs about 380 | H5 supported |
 | A2. A valid anchor | Purified methods against the clean-anchor benchmark | One-way DIF: .03–.19 below the benchmark. Mixed DIF (contamination cancels): within .06 of the benchmark (within .03 in most conditions) | H2 partly |
 | A2. A robust anchor | CML LRT, robust anchor (k = 5), against the purified CML LRT | Power .030 lower on average, and .077 below the clean-anchor benchmark | H1 rejected |
-| A3. An efficient statistic | Size-adjusted power at 50 + 50, one-way 0.8, $\mu$ = 0 | Clean anchor .314; difLRT .220; CML LRT purified .221; MH .217; robust anchor .236; baseline MIMIC .336; M-SP .226; anchortest .204. At a true 5% level the anchor-based realistic methods are equal (.20–.24); the baseline MIMIC is higher only because it assumes no impact | — |
+| A3. An efficient statistic | Size-adjusted power at 50 + 50, one-way 0.8, $\mu$ = 0 | Clean anchor .314; difLRT .220; CML LRT purified .221; MH .217; robust anchor .236; baseline MIMIC .336; M-SP .226; anchortest .204. At a true 5% level the anchor-based realistic methods are similar (.20–.24); the baseline MIMIC is higher only because it assumes no impact | — |
 | A4. A joint test | Bundle test of i1 + i5 + i10 | .700 / .950 / 1.000 / 1.000 (exact prediction at 50 + 50: .70). Rejection rate without DIF .027–.077 (mean .049). Little power with mixed DIF (.05–.38) | H4 supported |
 | A5. A one-sided test | Purified CML LRT, one- against two-sided, one-way 0.8, $\mu$ = 0 | .343 / .607 / .757 / .939 against .238 / .484 / .683 / .901: +.07 to +.12 at 50–150. One-sided Type I error of the three purified tests: .041–.057 without DIF, .014–.041 under one-way DIF | — |
 | A6. No gate | anchortest against the gated tree | Power +.14 / +.12 / +.09 / +.05 (mean over the eight DIF conditions) | H6 supported |
@@ -677,7 +665,8 @@ which drives the contamination of the anchor, was not varied. The MIMIC models a
 models fitted to data from a logistic model. The .05 level applies to each item, not to the family
 of ten tests (Benjamini–Hochberg control is reported separately). Unequal groups and items that differ in discrimination are common in
 practice; they are the subject of the follow-up study. Each condition's rates carry Monte Carlo
-error of up to about .03 for power; differences smaller than that are not interpreted.
+error (Section 5.1); differences in power of .03 or less between methods are not interpreted
+unless they are consistent across conditions.
 
 ## 7. Conclusions and looking forward
 
@@ -785,7 +774,12 @@ replication, so its MCSE is binomial, $\sqrt{R(1 - R)/n_{\text{rep}}}$. Simulati
 confidence intervals computed the same way, with the replication as the unit. In Simulation 2,
 recomputed from the stored statistics, the rates reproduce `results/power_study/rates.csv` to
 within .002. Across all conditions for the methods in Tables 8 and 9, the largest MCSE is .014 for
-Type I error (.012 in the no-DIF conditions) and .024 for power.
+Type I error (.012 in the no-DIF conditions) and .024 for power. For a difference between two
+methods in one condition, the same linearization is taken per replication for each method and
+differenced, which pairs the methods by data set (`R/11_paired_mcse.R`,
+`results/power_study/paired_diff_mcse.csv`): the paired MCSE has a median of .011 and a maximum of
+.023 for power, and a median of .005 and a maximum of .018 for Type I error, across all pairs of the
+realistic methods and the clean-anchor benchmark.
 
 **A3. Pre-specification, deviations and execution of Simulation 2.** Three commits in the author's
 development repository fixed the plan:

@@ -1,0 +1,6 @@
+Paired MCSE of the difference between two methods' rates, Simulation 2
+
+power, all pairs of realistic methods and the clean anchor: median 0.011, max 0.023; unpaired max 0.030
+power, pairs among the three purified methods: median 0.009, max 0.013
+type1, all pairs of realistic methods and the clean anchor: median 0.005, max 0.018; unpaired max 0.017
+type1, pairs among the three purified methods: median 0.004, max 0.005
