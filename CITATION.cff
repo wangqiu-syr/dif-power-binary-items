@@ -2,10 +2,14 @@ cff-version: 1.2.0
 message: "If you use this report or its code, please cite it as below."
 type: software
 title: "A wider window, the same wall: Two decades of item-level DIF tests for binary items"
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-11-22
 license: MIT
 repository-code: "https://github.com/wangqiu-syr/dif-power-binary-items"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24447165
+    description: "Zenodo archive of version 1.0.0"
 abstract: >-
   A report, with code and results, on the power of item-level differential item functioning (DIF)
   tests for binary items in small samples. Simulation 1 (10 Rasch items, 50 examinees per group,

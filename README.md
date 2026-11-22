@@ -3,8 +3,8 @@
 MIMIC, IRT likelihood-ratio and Rasch-tree tests for binary items: a report, with the code and
 results behind every number in it.
 
-[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Version 1.0.0 ·
-November 2026 · DOI: assigned by Zenodo at release · Preprint: to be added
+[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Version 1.0.1 ·
+November 2026 · DOI (version 1.0.0): [10.5281/zenodo.24447165](https://doi.org/10.5281/zenodo.24447165) · Preprint: to be added
 
 - **Report:** [`report/report.pdf`](report/report.pdf) (source [`report/report.md`](report/report.md))
 - **Supplement A3**, the retrospective ADEMP-PreReg form (Siepe et al., 2024) for Simulation 2:
@@ -205,8 +205,9 @@ line). Set `CHROME=/path/to/chrome` if Chromium is not found.
 ## How to cite
 
 Wang, Q. (2026). *A wider window, the same wall: Two decades of item-level DIF tests for binary items*
-(Version 1.0.0) [Report and code]. Zenodo. DOI to be added at release.
-https://github.com/wangqiu-syr/dif-power-binary-items
+(Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24447165
+
+Later versions are listed on the Zenodo record. Code: https://github.com/wangqiu-syr/dif-power-binary-items
 
 Citation metadata: [`CITATION.cff`](CITATION.cff).
 

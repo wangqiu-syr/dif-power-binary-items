@@ -1,6 +1,6 @@
 # A wider window, the same wall: Two decades of item-level DIF tests for binary items
 
-[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Version 1.0.0 · November 2026 · DOI: assigned by Zenodo at release (see the repository README)
+[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Version 1.0.1 · November 2026 · Zenodo: https://doi.org/10.5281/zenodo.24447165 (version 1.0.0; later versions are listed there)
 
 Text and figures: CC BY 4.0. Code: MIT. Code, results and how to reproduce every simulation result: https://github.com/wangqiu-syr/dif-power-binary-items
 
@@ -692,7 +692,7 @@ Robitzsch, 2026); the window is still opening.
 ## Data and code availability
 
 Code, results and this report: https://github.com/wangqiu-syr/dif-power-binary-items (version
-1.0.0), archived on Zenodo (DOI in the README). `R/run_all.R` rebuilds every table and figure from
+1.0.1), archived on Zenodo (https://doi.org/10.5281/zenodo.24447165 for version 1.0.0; later versions are listed there). `R/run_all.R` rebuilds every table and figure from
 the stored results in under a minute, or reruns both simulations. All results come from simulated
 data; no external data are used. Two parts are not included: the code for the exact calculations
 (Section 4.1, Table 4), which is released with the follow-up study (its results are included), and

@@ -1,6 +1,6 @@
 # Supplement A3. Retrospective ADEMP-PreReg form for Simulation 2
 
-[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Supplement to *A wider window, the same wall: Two decades of item-level DIF tests for binary items* · Version 1.0.0 · November 2026
+[Qiu Wang](https://orcid.org/0000-0003-1635-8050) (Syracuse University) · Supplement to *A wider window, the same wall: Two decades of item-level DIF tests for binary items* · Version 1.0.1 · November 2026
 
 Text: CC BY 4.0. Repository: https://github.com/wangqiu-syr/dif-power-binary-items
 
