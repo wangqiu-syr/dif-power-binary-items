@@ -657,7 +657,7 @@ sizes and two impact levels. Unequal groups and items that differ in discriminat
 practice; they are the subject of the follow-up study. Each condition's rates carry Monte Carlo
 error of up to about .03 for power; differences smaller than that are not interpreted.
 
-## 7. Conclusions
+## 7. Look forward
 
 Small item-level DIF studies with binary items are underpowered by design, not by method: at 50
 examinees per group no valid test can do much better than about .35 against 0.8 logits of DIF
