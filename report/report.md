@@ -12,8 +12,9 @@ the power and the Type I error of these tests for binary items, and what it take
 power per item while holding the 5% level.
 
 A baseline design at the small-sample end of DIF studies (10 Rasch items, 50 examinees per group,
-0.8 logits of DIF on three items) gave power in the order of three common methods: MIMIC, the IRT
-likelihood-ratio test and the Rasch tree. Exact calculations showed that no valid test
+0.8 logits of DIF on three items) gave low power for all three common methods: .35 for MIMIC, .32
+for the IRT likelihood-ratio test (which also flagged 12% of clean items) and .12 for the Rasch
+tree. Exact calculations showed that no valid test
 can exceed the ceiling of .39. The three methods differ in four components at once (the test
 statistic, the anchor, the design, meaning how group differences in ability are handled, and the
 decision rule), so the baseline comparison cannot say which component costs power or inflates
@@ -666,6 +667,11 @@ sample size: .80 per item needs about 160–195 examinees per group for 0.8 logi
 anchor, and for 0.5 logits about 380 even with a known clean anchor. Type I control comes from three method choices: a correct statistic,
 purification that re-tests every item, and a model for impact. Below the needed sample size, a
 pre-registered direction or a pre-specified joint test is the honest way to gain power.
+
+A test-level check sees the forest, whether DIF shifts a group comparison; it cannot name the
+trees (aka single items) that are biased, and balanced DIF can leave the forest unchanged while
+some trees stay unfair (Halpin, 2026). Both views are needed, and at small samples both meet the
+same wall.
 
 Two decades of new methods have opened a wider window on DIF in binary items, but none has moved
 the wall that small samples set. The newest results on robust scaling are mixed (Halpin, 2026;
